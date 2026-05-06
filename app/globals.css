@@ -1,26 +1,193 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
+@custom-variant dark (&:is(.dark *));
+
+/* =============================================================================
+   Design tokens — ported from the Guitare Shopify theme by DesignThemes.
+   Source of truth (read-only reference):
+     /Users/stynerstiner/Downloads/guitare-instruments-music-store-shopify-theme-2023-11-27-04-49-08-utc/_theme_extracted/
+   - Variable names taken from /assets/dt-custom.css.liquid lines 32-164
+   - Resolved color/size values taken from /config/settings_data.json `current`
+   - Breakpoints taken from @media queries in /assets/dt-framework.css
+   Items not present in either source are tagged "improvised".
+   ============================================================================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ─── Colors (Guitare current preset) ─────────────────────────────────── */
+  --color-bg: #0f0f0f;             /* settings_data.body_bg_color */
+  --color-fg: #dfdfdf;             /* settings_data.body_text_color */
+  --color-primary-brand: #0f0f0f;  /* settings_data.primary_color */
+  --color-accent-brand: #e2a53f;   /* settings_data.secondary_color */
+  --color-tertiary-brand: #333333; /* settings_data.tertiary_color */
+  --color-muted-brand: #7e7e7e;    /* settings_data.heading_color & link_color */
+  --color-overlay-brand: rgba(226, 165, 63, 0.5); /* overlay_color @ alpha 0.5 (color_modify in dt-custom.css.liquid:79) */
+
+  --color-button-bg: #0f0f0f;        /* settings_data.button_bg_color */
+  --color-button-fg: #ffffff;        /* settings_data.button_text_color */
+  --color-button-border: #e2a53f;    /* settings_data.button_border_color */
+  --color-button-hover-bg: #e2a53f;  /* settings_data.button_bg_hover_color */
+  --color-button-hover-fg: #ffffff;  /* settings_data.button_text_hover_color */
+
+  --color-border-brand: rgba(255, 255, 255, 0.08); /* improvised — Guitare uses #e9e9e9 on light theme */
+  --color-card-bg: #1a1a1a;          /* improvised — slight lift over body bg for card surfaces */
+
+  --color-success: #4f8a10;        /* settings_schema.success_color default */
+  --color-warning: #9f6000;        /* settings_schema.warning_color default */
+  --color-info:    #31708f;        /* settings_schema.info_color default */
+  --color-error:   #d8000c;        /* settings_schema.error_color default */
+
+  /* ─── shadcn token aliases — point at Guitare values ──────────────────── */
+  --background: var(--color-bg);
+  --foreground: var(--color-fg);
+  --card: var(--color-card-bg);
+  --card-foreground: var(--color-fg);
+  --popover: var(--color-card-bg);
+  --popover-foreground: var(--color-fg);
+  --primary: var(--color-primary-brand);
+  --primary-foreground: var(--color-button-fg);
+  --secondary: var(--color-tertiary-brand);
+  --secondary-foreground: var(--color-fg);
+  --muted: var(--color-tertiary-brand);
+  --muted-foreground: var(--color-muted-brand);
+  --accent: var(--color-accent-brand);
+  --accent-foreground: var(--color-bg);
+  --destructive: var(--color-error);
+  --border: var(--color-border-brand);
+  --input: var(--color-border-brand);
+  --ring: var(--color-accent-brand);
+
+  /* ─── Layout ──────────────────────────────────────────────────────────── */
+  --container-width: 1230px;       /* settings_data.container_width */
+  --container-lap-w: 1100px;       /* settings_schema lap_container_width default */
+  --container-tablet-w: 960px;     /* settings_data.tab_container_width */
+  --gutter: 30px;                  /* settings_data.gutter_width */
+
+  /* ─── Typography (resolved + schema defaults for h1/h2/h3) ────────────── */
+  --text-base: 1.125rem;           /* 18px = settings_data.type_base_size */
+  --line-height-base: 1.8;         /* settings_data.body_line_height */
+  --line-height-heading: 1.5;      /* settings_data.heading_line_height */
+  --text-h1: 2.5rem;               /* 40px = settings_schema.h1_size default */
+  --text-h2: 2.25rem;              /* 36px = settings_schema.h2_size default */
+  --text-h3: 1.875rem;             /* 30px = settings_schema.h3_size default */
+  --text-h4: 1.375rem;             /* 22px = settings_data.h4_size */
+  --text-h5: 1.25rem;              /* 20px = settings_data.h5_size */
+  --text-h6: 1rem;                 /* 16px = settings_data.h6_size */
+
+  /* ─── Radius / Shadow / Transition ────────────────────────────────────── */
+  --radius: 0px;                   /* settings_data.overall_border_radius */
+  --radius-button: 0px;            /* settings_data.button_border_radius */
+  --radius-pill-sm: 2px;           /* improvised — for incidental pills only */
+  --radius-pill-md: 4px;           /* improvised */
+
+  --shadow-dt: 0 0 10px rgba(0, 0, 0, 0.6); /* improvised — generic var(--DTboxShadow) shape */
+  --transition-base: all 0.3s ease; /* settings_schema.base_transitions default "all 0.3s linear" — eased here for nicer hover */
+
+  /* ─── Spacing aliases (button padding) ────────────────────────────────── */
+  --button-padding-y: 10px;        /* settings_data.button_padding "10px 30px 10px 30px" */
+  --button-padding-x: 30px;        /* settings_data.button_padding */
+  --button-padding-y-sm: 6px;      /* improvised — derived size variant */
+  --button-padding-x-sm: 20px;     /* improvised */
+  --button-padding-y-lg: 14px;     /* improvised */
+  --button-padding-x-lg: 40px;     /* improvised */
 }
 
 @theme inline {
+  /* Mint Tailwind utilities backed by the :root tokens above. */
+  /* Standard shadcn names (so generated components keep working) */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Guitare-flavored utility names */
+  --color-overlay: var(--color-overlay-brand);
+  --color-button-bg: var(--color-button-bg);
+  --color-button-fg: var(--color-button-fg);
+  --color-button-border: var(--color-button-border);
+  --color-button-hover-bg: var(--color-button-hover-bg);
+  --color-button-hover-fg: var(--color-button-hover-fg);
+
+  /* Container max-widths → mint `max-w-content`, `max-w-lap`, `max-w-tablet` */
+  --container-content: var(--container-width);
+  --container-lap: var(--container-lap-w);
+  --container-tablet: var(--container-tablet-w);
+
+  /* Radius — flatten everything to 0 unless explicitly using -pill-* */
+  --radius-sm: var(--radius-pill-sm);
+  --radius-md: var(--radius-pill-md);
+  --radius-lg: var(--radius);
+  --radius-xl: var(--radius);
+  --radius-2xl: var(--radius);
+
+  /* Shadow */
+  --shadow-dt: var(--shadow-dt);
+
+  /* Fonts — values injected by next/font in app/layout.tsx via className. */
+  --font-heading: var(--font-montserrat), "Montserrat", system-ui, sans-serif;
+  --font-body: var(--font-catamaran), "Catamaran", system-ui, sans-serif;
+  --font-sans: var(--font-catamaran), "Catamaran", system-ui, sans-serif;
+
+  /* Breakpoints — Guitare values from @media queries in dt-framework.css.
+     576/768/992/1200/1540 px → rem. */
+  --breakpoint-sm: 36rem;          /* 576px */
+  --breakpoint-md: 48rem;          /* 768px */
+  --breakpoint-lg: 62rem;          /* 992px */
+  --breakpoint-xl: 75rem;          /* 1200px */
+  --breakpoint-2xl: 96.25rem;      /* 1540px */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    border-color: var(--color-border-brand);
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  html {
+    font-family: var(--font-body);
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-size: var(--text-base);
+    line-height: var(--line-height-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-muted-brand);
+    line-height: var(--line-height-heading);
+    letter-spacing: 0;
+  }
+  h1 { font-size: var(--text-h1); }
+  h2 { font-size: var(--text-h2); }
+  h3 { font-size: var(--text-h3); }
+  h4 { font-size: var(--text-h4); }
+  h5 { font-size: var(--text-h5); }
+  h6 { font-size: var(--text-h6); }
+  a {
+    color: var(--color-muted-brand);
+    transition: var(--transition-base);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-accent-brand);
+  }
+  ::selection {
+    background: var(--color-accent-brand);
+    color: var(--color-bg);
+  }
 }
