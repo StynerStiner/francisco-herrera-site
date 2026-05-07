@@ -2,6 +2,64 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Signature script font — Francisco's brand mark, used for atmospheric
+   watermarks and decorative section eyebrows. Kept as `swap` so layout
+   doesn't jump while the font loads. */
+@font-face {
+  font-family: "Silently";
+  src: url("/fonts/Silently_FREE.ttf") format("truetype"),
+    url("/fonts/Silently_FREE.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Heading face — Silkroad luxury serif (Envato).
+   File path includes the timestamp suffix from the original archive. */
+@font-face {
+  font-family: "Silkroad";
+  src: url("/fonts/fonts-envato/silkroad-luxury-serif-typeface-2026-04-07-06-19-30-utc/Silkroad.woff") format("woff"),
+    url("/fonts/fonts-envato/silkroad-luxury-serif-typeface-2026-04-07-06-19-30-utc/Silkroad.ttf") format("truetype"),
+    url("/fonts/fonts-envato/silkroad-luxury-serif-typeface-2026-04-07-06-19-30-utc/Silkroad.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Body / navbar face — MoreCream elegant sans-serif (Envato).
+   ttf is smaller than otf, kept first. */
+@font-face {
+  font-family: "MoreCream";
+  src: url("/fonts/fonts-envato/more-cream-elegant-sans-serif-smooth-stylish-2026-04-07-05-57-16-utc/MoreCream.ttf") format("truetype"),
+    url("/fonts/fonts-envato/more-cream-elegant-sans-serif-smooth-stylish-2026-04-07-05-57-16-utc/MoreCream.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Horizontal marquee — used by the Saludos section. The inner row is
+   rendered with two copies of the same content side-by-side, then
+   translated -50% so the second copy lands exactly where the first
+   started, producing a seamless infinite loop.
+   Honors prefers-reduced-motion: animation pauses for visitors who've
+   opted out of motion. */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Marching-arrow indicator — three chevrons fade in/out in sequence to
+   suggest flow direction beneath the Saludos marquee. */
+@keyframes marquee-arrow {
+  0%, 100% { opacity: 0.2; transform: translateX(0); }
+  50%      { opacity: 1;   transform: translateX(2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-x,
+  .animate-marquee-arrow { animation: none !important; }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /* =============================================================================
@@ -137,10 +195,22 @@
   /* Shadow */
   --shadow-dt: var(--shadow-dt);
 
-  /* Fonts — values injected by next/font in app/layout.tsx via className. */
-  --font-heading: var(--font-montserrat), "Montserrat", system-ui, sans-serif;
-  --font-body: var(--font-catamaran), "Catamaran", system-ui, sans-serif;
-  --font-sans: var(--font-catamaran), "Catamaran", system-ui, sans-serif;
+  /* Fonts. Editorial serif pairing — readable + classy:
+     - heading / navbar / announcement → Playfair Display
+     - body paragraphs                 → Lora
+     - signature script                → Silently (brand mark)
+     Silkroad / MoreCream @font-face declarations remain above for optional
+     future accent use only — do NOT use for body. */
+  --font-heading: var(--font-heading-sans), "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: var(--font-body-sans), "Lora", Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-body-sans), "Lora", Georgia, "Times New Roman", serif;
+  --font-signature: "Silently", "Brush Script MT", cursive;
+
+  /* Marquee animation token — wires the @keyframes marquee-x defined
+     above into the `animate-marquee-x` Tailwind utility. */
+  --animate-marquee-x: marquee-x 90s linear infinite;
+  /* Marching arrow — three chevrons sequenced with delays in markup. */
+  --animate-marquee-arrow: marquee-arrow 1.8s ease-in-out infinite;
 
   /* Breakpoints — Guitare values from @media queries in dt-framework.css.
      576/768/992/1200/1540 px → rem. */

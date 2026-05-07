@@ -1,22 +1,26 @@
 import type { Metadata } from "next";
-import { Montserrat, Catamaran } from "next/font/google";
+import { Lora, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-// Self-hosted via next/font — replaces the Google Fonts <link> tags the
-// Guitare theme injected at runtime via Shopify's font_picker.
-// Heading: matches settings_data.header_font = "montserrat_n4" → Montserrat 400
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+// Editorial serif pairing — chosen for readability + classy artist feel:
+//   Heading / navbar / announcement → Playfair Display (editorial display serif)
+//   Body paragraphs                  → Lora (humanist serif, very readable)
+//   Signature                        → Silently (in globals.css)
+// Envato display faces in public/fonts/fonts-envato/ are reserved for
+// future accent use only — never body.
+const lora = Lora({
+  variable: "--font-body-sans",
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-// Body: matches settings_data.base_font = "catamaran_n4" → Catamaran 400
-const catamaran = Catamaran({
-  variable: "--font-catamaran",
+const playfair = Playfair_Display({
+  variable: "--font-heading-sans",
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -35,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${catamaran.variable}`}>
+    <html lang="en" className={`${lora.variable} ${playfair.variable}`}>
       <body className="min-h-screen antialiased">{children}</body>
     </html>
   );
