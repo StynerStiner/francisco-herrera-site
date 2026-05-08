@@ -32,7 +32,7 @@ export function DealBanner({ content, lang = "en" }: Props) {
       <div aria-hidden="true" className="absolute inset-0 bg-black/65" />
       <div className="relative mx-auto max-w-[var(--container-content)] px-6 py-24 lg:py-28 text-center">
         <div className="mx-auto max-w-3xl">
-          <span className="font-heading text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4 inline-block">
+          <span className="font-heading text-xs sm:text-sm uppercase tracking-[0.4em] text-white mb-4 inline-block">
             {t(content.eyebrow, lang)}
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl !text-[var(--color-fg)] mb-6 font-light !leading-tight">

@@ -38,20 +38,52 @@ export function VideoBanner({ content, lang = "en" }: Props) {
     <>
       <section
         // 700px height per templates/index.json "video_height":"700"
-        className="relative w-full h-[420px] sm:h-[560px] lg:h-[700px] overflow-hidden"
+        className="relative w-full h-[420px] sm:h-[560px] lg:h-[700px] overflow-hidden bg-black"
         aria-label={t(content.title, lang)}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={content.poster}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+        {content.backgroundVideo ? (
+          <>
+            {/* Blurred & scaled bg fills the letterbox texture */}
+            <video
+              src={content.backgroundVideo}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover scale-110 blur-2xl opacity-70"
+            />
+            {/* Heavy dimmer over the blurred bg — kills bright colors
+                like the red flag bleed-through so both letterbox sides
+                read as the same uniform dark. The foreground video below
+                renders on top, so the dimmer only affects the letterbox. */}
+            <div aria-hidden="true" className="absolute inset-0 bg-black/75" />
+            <video
+              src={content.backgroundVideo}
+              poster={content.poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-contain"
+            />
+          </>
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={content.poster}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
         <div aria-hidden="true" className="absolute inset-0 bg-black/55" />
 
         <div className="relative h-full mx-auto max-w-[var(--container-content)] px-6 flex flex-col items-center justify-center text-center">
-          <span className="font-heading text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4">
+          <span className="font-heading text-xs sm:text-sm uppercase tracking-[0.4em] text-white mb-4">
             {t(content.eyebrow, lang)}
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl !text-[var(--color-fg)] mb-3 font-light">

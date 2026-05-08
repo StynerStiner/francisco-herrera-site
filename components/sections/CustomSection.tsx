@@ -47,7 +47,7 @@ export function CustomSection({ content, lang = "en" }: Props) {
                 />
               </div>
               <div className={block.reverse ? "lg:pr-8" : "lg:pl-8"}>
-                <span className="font-heading text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4 inline-block">
+                <span className="font-heading text-xs uppercase tracking-[0.4em] text-white mb-4 inline-block">
                   {t(block.eyebrow, lang)}
                 </span>
                 <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl !text-[var(--color-fg)] mb-5 font-light !leading-tight">
