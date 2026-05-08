@@ -37,10 +37,10 @@ export function Header({ lang = "en" }: HeaderProps) {
         <div className="bg-[var(--color-button-bg)] border-b border-[var(--color-border-brand)]">
           <Container>
             <div className="flex items-center justify-between gap-4 py-2.5 text-sm">
-              <span className="hidden md:inline font-ui font-bold text-white">
+              <span className="hidden md:inline font-ui font-medium text-[var(--color-fg)]">
                 {topBarLeft[lang]}
               </span>
-              <span className="font-ui font-bold text-white text-center flex-1 md:flex-none">
+              <span className="font-ui font-medium text-[var(--color-fg)] text-center flex-1 md:flex-none">
                 <span className="text-[var(--color-accent-brand)]">★</span>{" "}
                 {announcementCopy[lang]}{" "}
                 <span className="text-[var(--color-accent-brand)]">★</span>
@@ -64,9 +64,9 @@ export function Header({ lang = "en" }: HeaderProps) {
           <NextLink
             href="/"
             aria-label="Francisco J. Herrera — Home"
-            className="font-heading text-2xl sm:text-3xl font-black leading-none text-white hover:text-[var(--color-accent-brand)] transition-colors shrink-0"
+            className="font-signature text-4xl sm:text-5xl leading-none text-[var(--color-accent-brand)] [-webkit-text-stroke:0.75px_currentColor] hover:opacity-80 transition-opacity shrink-0"
           >
-            <span className="text-[var(--color-accent-brand)]">F</span>rancisco<span className="hidden sm:inline"> J. Herrera</span>
+            Francisco<span className="hidden sm:inline"> J. Herrera</span>
           </NextLink>
 
           <nav
@@ -78,7 +78,7 @@ export function Header({ lang = "en" }: HeaderProps) {
                 key={item.href}
                 href={item.href}
                 unstyled
-                className="font-ui font-bold text-base text-white hover:text-[var(--color-accent-brand)] transition-colors"
+                className="font-ui font-medium text-[15px] text-white hover:text-[var(--color-accent-brand)] transition-colors"
               >
                 {t(item.label, lang)}
               </Link>
@@ -139,7 +139,7 @@ export function Header({ lang = "en" }: HeaderProps) {
                   key={item.href}
                   href={item.href}
                   unstyled
-                  className="font-ui font-bold text-base text-white hover:text-[var(--color-accent-brand)] transition-colors py-3 border-b border-[var(--color-border-brand)] last:border-0"
+                  className="font-ui font-medium text-base text-white hover:text-[var(--color-accent-brand)] transition-colors py-3 border-b border-[var(--color-border-brand)] last:border-0"
                   onClick={() => setMobileOpen(false)}
                 >
                   {t(item.label, lang)}
@@ -220,7 +220,7 @@ function LangToggle({ lang }: { lang: Lang }) {
   return (
     <span
       aria-label="Language"
-      className="font-ui font-bold text-sm flex items-center gap-2"
+      className="font-ui font-semibold text-sm flex items-center gap-2"
     >
       <span className={lang === "en" ? activeClass : idleClass}>EN</span>
       <span aria-hidden="true" className="text-[var(--color-muted-brand)]/50">|</span>
