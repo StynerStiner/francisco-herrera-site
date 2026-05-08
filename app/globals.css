@@ -195,15 +195,17 @@
   /* Shadow */
   --shadow-dt: var(--shadow-dt);
 
-  /* Fonts. Editorial serif pairing — readable + classy:
-     - heading / navbar / announcement → Playfair Display
-     - body paragraphs                 → Lora
-     - signature script                → Silently (brand mark)
+  /* Fonts. Three-tier system:
+     - hero / section headlines       → Playfair Display (editorial serif)
+     - body paragraphs                → Lora (humanist serif)
+     - navbar / UI chrome / CTAs      → Manrope (modern sans, solid at small caps)
+     - signature script               → Silently (brand mark)
      Silkroad / MoreCream @font-face declarations remain above for optional
      future accent use only — do NOT use for body. */
   --font-heading: var(--font-heading-sans), "Playfair Display", Georgia, "Times New Roman", serif;
   --font-body: var(--font-body-sans), "Lora", Georgia, "Times New Roman", serif;
   --font-sans: var(--font-body-sans), "Lora", Georgia, "Times New Roman", serif;
+  --font-ui: var(--font-ui-sans), "Manrope", system-ui, -apple-system, sans-serif;
   --font-signature: "Silently", "Brush Script MT", cursive;
 
   /* Marquee animation token — wires the @keyframes marquee-x defined

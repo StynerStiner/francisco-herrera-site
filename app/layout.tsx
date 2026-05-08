@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Lora, Playfair_Display } from "next/font/google";
+import { Lora, Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-// Editorial serif pairing — chosen for readability + classy artist feel:
-//   Heading / navbar / announcement → Playfair Display (editorial display serif)
-//   Body paragraphs                  → Lora (humanist serif, very readable)
-//   Signature                        → Silently (in globals.css)
+// Three-tier typography:
+//   Hero / section headlines → Playfair Display (editorial display serif)
+//   Body paragraphs           → Lora (humanist serif, very readable)
+//   Navbar / UI chrome / CTAs → Manrope (modern sans, solid at small caps)
+//   Signature                 → Silently (in globals.css)
 // Envato display faces in public/fonts/fonts-envato/ are reserved for
 // future accent use only — never body.
 const lora = Lora({
@@ -24,6 +25,13 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+const manrope = Manrope({
+  variable: "--font-ui-sans",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "Francisco J. Herrera",
@@ -39,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lora.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${lora.variable} ${playfair.variable} ${manrope.variable}`}>
       <body className="min-h-screen antialiased">{children}</body>
     </html>
   );

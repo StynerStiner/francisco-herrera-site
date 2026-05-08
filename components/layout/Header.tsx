@@ -5,7 +5,7 @@
 // Icon row classes: .CartCount (line 69), account/wishlist/search (42-114).
 
 import * as React from "react";
-import { Search, Heart, User, ShoppingBag, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { primaryNav } from "@/lib/nav";
 import { t, type Lang } from "@/lib/i18n";
 import { Container } from "@/components/ui/container";
@@ -37,10 +37,10 @@ export function Header({ lang = "en" }: HeaderProps) {
         <div className="bg-[var(--color-button-bg)] border-b border-[var(--color-border-brand)]">
           <Container>
             <div className="flex items-center justify-between gap-4 py-2 text-[11px] uppercase tracking-[0.2em]">
-              <span className="hidden md:inline text-[var(--color-muted-brand)]">
+              <span className="hidden md:inline font-ui font-semibold text-[var(--color-fg)]">
                 {topBarLeft[lang]}
               </span>
-              <span className="font-heading text-[var(--color-fg)] text-center flex-1 md:flex-none">
+              <span className="font-ui font-semibold text-[var(--color-fg)] text-center flex-1 md:flex-none">
                 <span className="text-[var(--color-accent-brand)]">★</span>{" "}
                 {announcementCopy[lang]}{" "}
                 <span className="text-[var(--color-accent-brand)]">★</span>
@@ -64,7 +64,7 @@ export function Header({ lang = "en" }: HeaderProps) {
           <NextLink
             href="/"
             aria-label="Francisco J. Herrera — Home"
-            className="font-heading text-base font-semibold uppercase tracking-[0.2em] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors shrink-0"
+            className="font-ui text-base font-bold uppercase tracking-[0.2em] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors shrink-0"
           >
             <span className="text-[var(--color-accent-brand)]">F</span>rancisco{" "}
             <span className="hidden sm:inline">J. Herrera</span>
@@ -79,27 +79,42 @@ export function Header({ lang = "en" }: HeaderProps) {
                 key={item.href}
                 href={item.href}
                 unstyled
-                className="font-heading text-xs uppercase tracking-[0.18em] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors"
+                className="font-ui font-semibold text-xs uppercase tracking-[0.18em] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors"
               >
                 {t(item.label, lang)}
               </Link>
             ))}
           </nav>
 
-          {/* Icon row — Guitare 42-114 */}
+          {/* Icon row — Search + Donate + Cart (custom icon set from /public/icons) */}
           <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             <IconButton label={lang === "en" ? "Search" : "Buscar"}>
-              <Search className="size-4" aria-hidden="true" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/icons/Search/Main%20File/SVG/Glyph/search,%20magnifying,%20zoom,%20find,%20exploration.svg"
+                alt=""
+                aria-hidden="true"
+                className="h-6 w-6 invert"
+              />
             </IconButton>
-            <IconButton label={lang === "en" ? "Wishlist" : "Lista de deseos"}>
-              <Heart className="size-4" aria-hidden="true" />
-            </IconButton>
-            <IconButton label={lang === "en" ? "Account" : "Cuenta"}>
-              <User className="size-4" aria-hidden="true" />
-            </IconButton>
-            <IconButton label={lang === "en" ? "Cart" : "Carrito"} badge="0">
-              <ShoppingBag className="size-4" aria-hidden="true" />
-            </IconButton>
+            <IconLink href="/donate" label={lang === "en" ? "Donate" : "Donar"}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/icons/shopping-mail_png/Assistance.png"
+                alt=""
+                aria-hidden="true"
+                className="h-6 w-6 invert"
+              />
+            </IconLink>
+            <IconLink href="/store" label={lang === "en" ? "Cart" : "Carrito"} badge="0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/icons/ecommerce_png/Checkout.png"
+                alt=""
+                aria-hidden="true"
+                className="h-6 w-6 invert"
+              />
+            </IconLink>
             <span className="hidden sm:flex items-center gap-2 ml-2 pl-3 border-l border-[var(--color-border-brand)]">
               <LangToggle lang={lang} />
             </span>
@@ -125,7 +140,7 @@ export function Header({ lang = "en" }: HeaderProps) {
                   key={item.href}
                   href={item.href}
                   unstyled
-                  className="font-heading text-xs uppercase tracking-[0.18em] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors py-3 border-b border-[var(--color-border-brand)] last:border-0"
+                  className="font-ui font-semibold text-xs uppercase tracking-[0.18em] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors py-3 border-b border-[var(--color-border-brand)] last:border-0"
                   onClick={() => setMobileOpen(false)}
                 >
                   {t(item.label, lang)}
@@ -155,7 +170,7 @@ function IconButton({
     <button
       type="button"
       aria-label={label}
-      className="relative inline-flex h-9 w-9 items-center justify-center text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors"
+      className="relative inline-flex h-10 w-10 items-center justify-center text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors"
     >
       {children}
       {badge !== undefined && (
@@ -170,13 +185,43 @@ function IconButton({
   );
 }
 
+function IconLink({
+  href,
+  children,
+  label,
+  badge,
+}: {
+  href: string;
+  children: React.ReactNode;
+  label: string;
+  badge?: string;
+}) {
+  return (
+    <NextLink
+      href={href}
+      aria-label={label}
+      className="relative inline-flex h-10 w-10 items-center justify-center text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors"
+    >
+      {children}
+      {badge !== undefined && (
+        <span
+          aria-hidden="true"
+          className="absolute -top-0.5 -right-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--color-accent-brand)] px-1 text-[10px] font-medium leading-none text-[var(--color-bg)]"
+        >
+          {badge}
+        </span>
+      )}
+    </NextLink>
+  );
+}
+
 function LangToggle({ lang }: { lang: Lang }) {
   const activeClass = "text-[var(--color-accent-brand)]";
   const idleClass = "text-[var(--color-muted-brand)] hover:text-[var(--color-accent-brand)]";
   return (
     <span
       aria-label="Language"
-      className="font-heading text-xs uppercase tracking-[0.2em] flex items-center gap-2"
+      className="font-ui font-semibold text-xs uppercase tracking-[0.2em] flex items-center gap-2"
     >
       <span className={lang === "en" ? activeClass : idleClass}>EN</span>
       <span aria-hidden="true" className="text-[var(--color-muted-brand)]/50">|</span>
