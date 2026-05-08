@@ -17,8 +17,8 @@ type HeaderProps = {
 };
 
 const announcementCopy: Record<Lang, string> = {
-  en: "FREE SHIPPING ON CDS · BOOK FRANCISCO FOR YOUR EVENT",
-  es: "ENVÍO GRATIS EN CDS · CONTRATA A FRANCISCO PARA TU EVENTO",
+  en: "Free shipping on CDs · Book Francisco for your event",
+  es: "Envío gratis en CDs · Contrata a Francisco para tu evento",
 };
 
 const topBarLeft: Record<Lang, string> = {
@@ -36,11 +36,11 @@ export function Header({ lang = "en" }: HeaderProps) {
       {announcementOpen && (
         <div className="bg-[var(--color-button-bg)] border-b border-[var(--color-border-brand)]">
           <Container>
-            <div className="flex items-center justify-between gap-4 py-2 text-[11px] uppercase tracking-[0.2em]">
-              <span className="hidden md:inline font-ui font-semibold text-[var(--color-fg)]">
+            <div className="flex items-center justify-between gap-4 py-2.5 text-sm">
+              <span className="hidden md:inline font-ui font-medium text-[var(--color-fg)]">
                 {topBarLeft[lang]}
               </span>
-              <span className="font-ui font-semibold text-[var(--color-fg)] text-center flex-1 md:flex-none">
+              <span className="font-ui font-medium text-[var(--color-fg)] text-center flex-1 md:flex-none">
                 <span className="text-[var(--color-accent-brand)]">★</span>{" "}
                 {announcementCopy[lang]}{" "}
                 <span className="text-[var(--color-accent-brand)]">★</span>
@@ -64,22 +64,21 @@ export function Header({ lang = "en" }: HeaderProps) {
           <NextLink
             href="/"
             aria-label="Francisco J. Herrera — Home"
-            className="font-ui text-base font-bold uppercase tracking-[0.2em] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors shrink-0"
+            className="font-signature text-3xl sm:text-4xl leading-none text-[var(--color-accent-brand)] hover:opacity-80 transition-opacity shrink-0"
           >
-            <span className="text-[var(--color-accent-brand)]">F</span>rancisco{" "}
-            <span className="hidden sm:inline">J. Herrera</span>
+            Francisco<span className="hidden sm:inline"> J. Herrera</span>
           </NextLink>
 
           <nav
             aria-label="Primary"
-            className="hidden lg:flex items-center gap-6 flex-1 justify-center"
+            className="hidden lg:flex items-center gap-7 flex-1 justify-center"
           >
             {primaryNav.slice(0, 7).map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 unstyled
-                className="font-ui font-semibold text-xs uppercase tracking-[0.18em] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors"
+                className="font-ui font-medium text-[15px] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors"
               >
                 {t(item.label, lang)}
               </Link>
@@ -140,7 +139,7 @@ export function Header({ lang = "en" }: HeaderProps) {
                   key={item.href}
                   href={item.href}
                   unstyled
-                  className="font-ui font-semibold text-xs uppercase tracking-[0.18em] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors py-3 border-b border-[var(--color-border-brand)] last:border-0"
+                  className="font-ui font-medium text-base text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors py-3 border-b border-[var(--color-border-brand)] last:border-0"
                   onClick={() => setMobileOpen(false)}
                 >
                   {t(item.label, lang)}
@@ -221,7 +220,7 @@ function LangToggle({ lang }: { lang: Lang }) {
   return (
     <span
       aria-label="Language"
-      className="font-ui font-semibold text-xs uppercase tracking-[0.2em] flex items-center gap-2"
+      className="font-ui font-semibold text-sm flex items-center gap-2"
     >
       <span className={lang === "en" ? activeClass : idleClass}>EN</span>
       <span aria-hidden="true" className="text-[var(--color-muted-brand)]/50">|</span>
