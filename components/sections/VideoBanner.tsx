@@ -86,7 +86,7 @@ export function VideoBanner({ content, lang = "en" }: Props) {
           <span className="font-heading text-xs sm:text-sm uppercase tracking-[0.4em] text-white mb-4">
             {t(content.eyebrow, lang)}
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl !text-[var(--color-fg)] mb-3 font-light">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl !text-white mb-3 font-normal">
             {t(content.title, lang)}
           </h2>
           <p className="text-[var(--color-fg)]/80 text-base lg:text-lg mb-10">

@@ -62,7 +62,7 @@ export function GridBanner({ content, lang = "en" }: Props) {
           <span className="font-heading text-xs uppercase tracking-[0.4em] text-white mb-3 inline-block">
             {t(content.eyebrow, lang)}
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl !text-[var(--color-fg)] font-light">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl !text-white font-normal">
             {t(content.title, lang)}
           </h2>
         </div>
@@ -216,7 +216,7 @@ function AlbumRow({ card, lang }: { card: GridBannerCard; lang: Lang }) {
               loading="lazy"
             />
           </div>
-          <h3 className="font-heading text-xl lg:text-2xl !text-[var(--color-fg)] mb-1 font-light">
+          <h3 className="font-heading text-xl lg:text-2xl !text-white mb-1 font-normal">
             {t(card.title, lang)}
           </h3>
           <p className="text-xs uppercase tracking-[0.18em] text-[var(--color-accent-brand)] mb-4">
@@ -332,7 +332,7 @@ function AlbumRow({ card, lang }: { card: GridBannerCard; lang: Lang }) {
                 className="w-16 h-16 object-contain shrink-0"
               />
               <div>
-                <h3 className="font-heading text-xl lg:text-2xl !text-[var(--color-fg)] mb-1 font-light">
+                <h3 className="font-heading text-xl lg:text-2xl !text-white mb-1 font-normal">
                   {t(card.title, lang)}
                 </h3>
                 <p className="text-xs uppercase tracking-[0.18em] text-[var(--color-accent-brand)]">

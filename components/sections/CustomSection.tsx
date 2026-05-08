@@ -24,7 +24,7 @@ export function CustomSection({ content, lang = "en" }: Props) {
           <span className="font-heading text-xs uppercase tracking-[0.4em] text-[var(--color-muted-brand)] mb-3 inline-block">
             {t(content.sectionEyebrow, lang)}
           </span>
-          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl !text-[var(--color-fg)] font-light">
+          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl !text-white font-normal">
             {t(content.sectionTitle, lang)}
           </h2>
         </div>
@@ -50,7 +50,7 @@ export function CustomSection({ content, lang = "en" }: Props) {
                 <span className="font-heading text-xs uppercase tracking-[0.4em] text-white mb-4 inline-block">
                   {t(block.eyebrow, lang)}
                 </span>
-                <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl !text-[var(--color-fg)] mb-5 font-light !leading-tight">
+                <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl !text-white mb-5 font-normal !leading-tight">
                   {t(block.title, lang)}
                 </h3>
                 <p className="text-[var(--color-muted-brand)] text-base lg:text-lg mb-8 leading-relaxed">
