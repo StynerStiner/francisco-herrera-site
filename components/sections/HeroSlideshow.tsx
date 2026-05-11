@@ -98,17 +98,7 @@ export function HeroSlideshow({ slides, lang = "en", autoplay = false }: Props) 
               role="group"
               aria-roledescription="slide"
             >
-              <div
-                className={[
-                  "relative bg-black",
-                  // Slides with `imageFit: "contain"` (e.g. the album-cover
-                  // first slide) get a taller mobile height so the
-                  // contained image + the `right-below` text overlay both
-                  // fit without cutting off either.
-                  slide.imageFit === "contain" ? "h-150" : "h-87.5",
-                  "sm:h-125 md:h-150 lg:h-175 xl:h-195",
-                ].join(" ")}
-              >
+              <div className="relative h-[350px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[780px] bg-black">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={slide.image}
@@ -162,7 +152,12 @@ export function HeroSlideshow({ slides, lang = "en", autoplay = false }: Props) 
                       </p>
                       <NextLink
                         href={slide.cta.href}
-                        className={buttonVariants({ variant: "primary", size: "md" })}
+                        // Allow long bilingual labels (e.g. "ABOUT FRANCISCO
+                        // / SOBRE FRANCISCO") to wrap on mobile so they
+                        // don't overflow the slide's right edge. The
+                        // button keeps single-line behavior at sm+ where
+                        // it has room.
+                        className={`${buttonVariants({ variant: "primary", size: "md" })} max-w-full whitespace-normal text-center leading-tight text-[11px] sm:text-sm sm:whitespace-nowrap`}
                       >
                         {t(slide.cta.label, lang)}
                       </NextLink>
@@ -187,7 +182,12 @@ export function HeroSlideshow({ slides, lang = "en", autoplay = false }: Props) 
                       </p>
                       <NextLink
                         href={slide.cta.href}
-                        className={buttonVariants({ variant: "primary", size: "md" })}
+                        // Allow long bilingual labels (e.g. "ABOUT FRANCISCO
+                        // / SOBRE FRANCISCO") to wrap on mobile so they
+                        // don't overflow the slide's right edge. The
+                        // button keeps single-line behavior at sm+ where
+                        // it has room.
+                        className={`${buttonVariants({ variant: "primary", size: "md" })} max-w-full whitespace-normal text-center leading-tight text-[11px] sm:text-sm sm:whitespace-nowrap`}
                       >
                         {t(slide.cta.label, lang)}
                       </NextLink>
