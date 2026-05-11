@@ -216,7 +216,11 @@ const STYLES = `
 .photogallery > li {
   position: relative;
   flex-grow: 1;
-  height: 320px;
+  /* Per-cell height comes from the --cell-height custom property set
+     inline by GalleryItem (falls back to 320px). Using a var rather than
+     an inline height so the @media queries below can still override for
+     tablet/mobile breakpoints. */
+  height: var(--cell-height, 320px);
   overflow: hidden;
   border: 1px solid var(--color-border-brand);
   background: #000;
@@ -448,9 +452,13 @@ function GalleryItem({
       ? `Open ${altText} in a new tab`
       : `Abrir ${altText} en una pestaña nueva`;
 
-  const liStyle: React.CSSProperties = {};
+  // We expose `cell.height` as a CSS custom property rather than an inline
+  // `height` so the mobile media query (.photogallery > li { height: 200px })
+  // can still override the per-cell value. Inline styles otherwise win and
+  // produced 200px+ of empty black space below the IMG_1053 cell on mobile.
+  const liStyle: React.CSSProperties & Record<string, string | number> = {};
   if (cell.noStretch) liStyle.flexGrow = 0;
-  if (cell.height) liStyle.height = cell.height;
+  if (cell.height) liStyle["--cell-height"] = cell.height;
   const hasLiStyle = cell.noStretch || cell.height;
 
   return (
