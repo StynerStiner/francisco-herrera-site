@@ -13,8 +13,10 @@ export function Gallery({ content, lang = "en" }: Props) {
       className="relative w-full bg-[var(--color-bg-deeper)] border-t border-black"
       aria-label={lang === "en" ? "Gallery" : "Galería"}
     >
-      {/* Full-bleed cinematic banner — same aspect ratios as StageBanner */}
-      <div className="relative w-full overflow-hidden bg-black aspect-[12/5] sm:aspect-[16/6] lg:aspect-[24/10]">
+      {/* Full-bleed cinematic banner — same aspect ratios as StageBanner.
+          Mobile uses 4/3 (was 12/5) so the studio photo isn't squashed
+          into a 133px sliver at 320px width. */}
+      <div className="relative w-full overflow-hidden bg-black aspect-square sm:aspect-16/6 lg:aspect-24/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={content.wideImage}

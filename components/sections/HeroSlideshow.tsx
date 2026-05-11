@@ -98,7 +98,17 @@ export function HeroSlideshow({ slides, lang = "en", autoplay = false }: Props) 
               role="group"
               aria-roledescription="slide"
             >
-              <div className="relative h-[350px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[780px] bg-black">
+              <div
+                className={[
+                  "relative bg-black",
+                  // Slides with `imageFit: "contain"` (e.g. the album-cover
+                  // first slide) get a taller mobile height so the
+                  // contained image + the `right-below` text overlay both
+                  // fit without cutting off either.
+                  slide.imageFit === "contain" ? "h-150" : "h-87.5",
+                  "sm:h-125 md:h-150 lg:h-175 xl:h-195",
+                ].join(" ")}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={slide.image}
