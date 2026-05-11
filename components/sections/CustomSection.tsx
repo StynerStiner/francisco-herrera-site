@@ -18,14 +18,29 @@ type Props = {
 
 export function CustomSection({ content, lang = "en" }: Props) {
   return (
-    <section className="bg-[var(--color-bg)] py-20 lg:py-24">
-      <div className="mx-auto max-w-[var(--container-content)] px-6">
-        <div className="text-center mb-14">
-          <span className="font-heading text-xs uppercase tracking-[0.4em] text-[var(--color-muted-brand)] mb-3 inline-block">
+    <section className="relative isolate overflow-hidden bg-[var(--color-bg-warm)] section-atmospheric py-20 lg:py-24 border-t border-black">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/Solo-Portraits/2.Solo-Portraits-Vertical.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 h-full w-full object-cover"
+        style={{ objectPosition: "center 30%" }}
+        loading="lazy"
+      />
+      {/* Warm-tobacco scrim — same recipe as /epk Bio section. */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#2a2318]/85" />
+      <div className="relative mx-auto max-w-[var(--container-content)] px-6">
+        <div className="text-center mb-16 lg:mb-20 max-w-3xl mx-auto">
+          <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4 inline-block">
             {t(content.sectionEyebrow, lang)}
           </span>
-          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl !text-white font-normal">
-            {t(content.sectionTitle, lang)}
+          <h2 className="font-heading font-black text-5xl sm:text-6xl lg:text-7xl !text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
+            {lang === "en" ? "Cultural worker," : "Trabajador cultural,"}
+            <br />
+            <span className="italic font-light text-[var(--color-accent-brand)]">
+              {lang === "en" ? "songwriter, bridge." : "cantautor, puente."}
+            </span>
           </h2>
         </div>
 
@@ -47,11 +62,12 @@ export function CustomSection({ content, lang = "en" }: Props) {
                 />
               </div>
               <div className={block.reverse ? "lg:pr-8" : "lg:pl-8"}>
-                <span className="font-heading text-xs uppercase tracking-[0.4em] text-white mb-4 inline-block">
+                <span className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4 inline-block">
                   {t(block.eyebrow, lang)}
                 </span>
-                <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl !text-white mb-5 font-normal !leading-tight">
+                <h3 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl !text-[var(--color-fg)] mb-5 uppercase tracking-tight !leading-[0.95]">
                   {t(block.title, lang)}
+                  <span className="italic font-light text-[var(--color-accent-brand)]">.</span>
                 </h3>
                 <p className="text-[var(--color-muted-brand)] text-base lg:text-lg mb-8 leading-relaxed">
                   {t(block.body, lang)}

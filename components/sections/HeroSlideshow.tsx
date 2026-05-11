@@ -90,6 +90,7 @@ export function HeroSlideshow({ slides, lang = "en", autoplay = false }: Props) 
           {slides.map((slide) => {
             const overlay = slide.overlay ?? true;
             const centerBelow = slide.align === "center-below";
+            const rightBelow = slide.align === "right-below";
             return (
             <div
               key={slide.id}
@@ -121,9 +122,25 @@ export function HeroSlideshow({ slides, lang = "en", autoplay = false }: Props) 
                     className={`absolute inset-0 ${TINT_CLASSES[slide.tint]}`}
                   />
                 )}
-                {centerBelow ? (
-                  <div className="relative h-full mx-auto max-w-[var(--container-content)] px-5 sm:px-10 flex items-end justify-center pb-12 sm:pb-20 md:pb-24 lg:pb-32">
+                {slide.sideVignette && (
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 [background:linear-gradient(to_right,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.30)_15%,rgba(0,0,0,0.10)_38%,rgba(0,0,0,0.05)_62%,rgba(0,0,0,0.25)_88%,rgba(0,0,0,0.50)_100%)]"
+                  />
+                )}
+                {centerBelow || rightBelow ? (
+                  <div
+                    className={[
+                      "relative h-full mx-auto max-w-[var(--container-content)] px-5 sm:px-10 flex items-end pb-12 sm:pb-20 md:pb-24 lg:pb-32",
+                      rightBelow ? "justify-end" : "justify-center",
+                    ].join(" ")}
+                  >
                     <div className="max-w-3xl text-center">
+                      {slide.decorTitle && (
+                        <p className="font-heading font-black uppercase tracking-wide text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-gold-3d leading-none mb-3 sm:mb-4">
+                          {t(slide.decorTitle, lang)}
+                        </p>
+                      )}
                       <span className="font-heading text-[10px] sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.4em] text-white mb-3 sm:mb-4 inline-block max-w-full break-words">
                         {t(slide.eyebrow, lang)}
                       </span>
@@ -144,6 +161,11 @@ export function HeroSlideshow({ slides, lang = "en", autoplay = false }: Props) 
                 ) : (
                   <div className="relative h-full mx-auto max-w-[var(--container-content)] px-5 sm:px-10 flex items-center">
                     <div className="max-w-2xl">
+                      {slide.decorTitle && (
+                        <p className="font-heading font-black uppercase tracking-wide text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-gold-3d leading-none mb-3 sm:mb-4">
+                          {t(slide.decorTitle, lang)}
+                        </p>
+                      )}
                       <span className="font-heading text-[10px] sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.4em] text-white mb-3 sm:mb-4 inline-block max-w-full break-words">
                         {t(slide.eyebrow, lang)}
                       </span>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Lora, Manrope, Playfair_Display } from "next/font/google";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import "./globals.css";
 
 // Three-tier typography:
@@ -47,8 +48,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lora.variable} ${playfair.variable} ${manrope.variable}`}>
-      <body className="min-h-screen antialiased">{children}</body>
+    <html lang="en" className={`${lora.variable} ${playfair.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <body className="min-h-screen antialiased" suppressHydrationWarning>
+        {children}
+        <ScrollToTop />
+      </body>
     </html>
   );
 }

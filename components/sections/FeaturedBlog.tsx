@@ -19,7 +19,7 @@ type Props = {
 export function FeaturedBlog({ content, lang = "en" }: Props) {
   return (
     <section
-      className="relative w-full overflow-hidden py-20 lg:py-24"
+      className="relative w-full bg-[var(--color-bg-warm)] section-atmospheric overflow-hidden py-20 lg:py-24 border-t border-black"
       aria-label={t(content.title, lang)}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -39,11 +39,12 @@ export function FeaturedBlog({ content, lang = "en" }: Props) {
 
       <div className="relative mx-auto max-w-[var(--container-content)] px-6">
         <div className="text-center mb-14 max-w-3xl mx-auto">
-          <span className="font-heading text-xs uppercase tracking-[0.4em] text-white mb-3 inline-block">
+          <span className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
             {t(content.eyebrow, lang)}
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl !text-white font-normal">
+          <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl !text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
             {t(content.title, lang)}
+            <span className="italic font-light text-[var(--color-accent-brand)]">.</span>
           </h2>
         </div>
 

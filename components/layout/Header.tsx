@@ -5,8 +5,8 @@
 // Icon row classes: .CartCount (line 69), account/wishlist/search (42-114).
 
 import * as React from "react";
-import { Menu, X } from "lucide-react";
-import { primaryNav } from "@/lib/nav";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { primaryNav, type NavItem } from "@/lib/nav";
 import { t, type Lang } from "@/lib/i18n";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/components/ui/link";
@@ -17,8 +17,8 @@ type HeaderProps = {
 };
 
 const announcementCopy: Record<Lang, string> = {
-  en: "Free shipping on CDs · Book Francisco for your event",
-  es: "Envío gratis en CDs · Contrata a Francisco para tu evento",
+  en: "Book Francisco for your event",
+  es: "Contrata a Francisco para tu evento",
 };
 
 const topBarLeft: Record<Lang, string> = {
@@ -73,48 +73,27 @@ export function Header({ lang = "en" }: HeaderProps) {
             aria-label="Primary"
             className="hidden lg:flex items-center gap-7 flex-1 justify-center"
           >
-            {primaryNav.slice(0, 7).map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                unstyled
-                className="font-ui font-medium text-[15px] text-white hover:text-[var(--color-accent-brand)] transition-colors"
-              >
-                {t(item.label, lang)}
-              </Link>
-            ))}
+            {primaryNav.map((item) =>
+              item.children?.length ? (
+                <NavDropdown key={item.href} item={item} lang={lang} />
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  unstyled
+                  className="font-ui font-medium text-[15px] text-white hover:text-[var(--color-accent-brand)] transition-colors"
+                >
+                  {t(item.label, lang)}
+                </Link>
+              ),
+            )}
           </nav>
 
-          {/* Icon row — Search + Donate + Cart (custom icon set from /public/icons) */}
+          {/* Right side — language toggle only. The Search / Donate / Cart
+              icon trio was removed per client request; if Donate or Cart
+              come back, restore them as IconLinks here. */}
           <div className="flex items-center gap-1 sm:gap-2 shrink-0">
-            <IconButton label={lang === "en" ? "Search" : "Buscar"}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/icons/Search/Main%20File/SVG/Glyph/search,%20magnifying,%20zoom,%20find,%20exploration.svg"
-                alt=""
-                aria-hidden="true"
-                className="h-6 w-6 invert"
-              />
-            </IconButton>
-            <IconLink href="/donate" label={lang === "en" ? "Donate" : "Donar"}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/icons/shopping-mail_png/Assistance.png"
-                alt=""
-                aria-hidden="true"
-                className="h-6 w-6 invert"
-              />
-            </IconLink>
-            <IconLink href="/store" label={lang === "en" ? "Cart" : "Carrito"} badge="0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/icons/ecommerce_png/Checkout.png"
-                alt=""
-                aria-hidden="true"
-                className="h-6 w-6 invert"
-              />
-            </IconLink>
-            <span className="hidden sm:flex items-center gap-2 ml-2 pl-3 border-l border-[var(--color-border-brand)]">
+            <span className="hidden sm:flex items-center gap-2">
               <LangToggle lang={lang} />
             </span>
             <button
@@ -135,15 +114,31 @@ export function Header({ lang = "en" }: HeaderProps) {
           <Container>
             <nav aria-label="Mobile" className="flex flex-col py-4">
               {primaryNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  unstyled
-                  className="font-ui font-medium text-base text-white hover:text-[var(--color-accent-brand)] transition-colors py-3 border-b border-[var(--color-border-brand)] last:border-0"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {t(item.label, lang)}
-                </Link>
+                <React.Fragment key={item.href}>
+                  <Link
+                    href={item.href}
+                    unstyled
+                    className="font-ui font-medium text-base text-white hover:text-[var(--color-accent-brand)] transition-colors py-3 border-b border-[var(--color-border-brand)] last:border-0"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {t(item.label, lang)}
+                  </Link>
+                  {/* Indented sub-items rendered inline so the mobile
+                      drawer doesn't need its own toggle state. */}
+                  {item.children?.map((child) =>
+                    child.href === item.href ? null : (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        unstyled
+                        className="font-ui font-medium text-sm text-[var(--color-fg)]/80 hover:text-[var(--color-accent-brand)] transition-colors py-2.5 pl-5 border-b border-[var(--color-border-brand)]"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        ↳ {t(child.label, lang)}
+                      </Link>
+                    ),
+                  )}
+                </React.Fragment>
               ))}
               <div className="pt-4">
                 <LangToggle lang={lang} />
@@ -156,61 +151,64 @@ export function Header({ lang = "en" }: HeaderProps) {
   );
 }
 
-function IconButton({
-  children,
-  label,
-  badge,
-}: {
-  children: React.ReactNode;
-  label: string;
-  badge?: string;
-}) {
-  return (
-    <button
-      type="button"
-      aria-label={label}
-      className="relative inline-flex h-10 w-10 items-center justify-center text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors"
-    >
-      {children}
-      {badge !== undefined && (
-        <span
-          aria-hidden="true"
-          className="absolute -top-0.5 -right-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--color-accent-brand)] px-1 text-[10px] font-medium leading-none text-[var(--color-bg)]"
-        >
-          {badge}
-        </span>
-      )}
-    </button>
-  );
-}
+// Hover/focus dropdown for primary-nav items that have children. The
+// parent label is itself a link to its own href; hovering or focusing
+// it reveals the children in an absolutely-positioned panel below.
+// Closes on mouse-leave from the wrapper or when focus leaves the panel.
+function NavDropdown({ item, lang }: { item: NavItem; lang: Lang }) {
+  const [open, setOpen] = React.useState(false);
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
 
-function IconLink({
-  href,
-  children,
-  label,
-  badge,
-}: {
-  href: string;
-  children: React.ReactNode;
-  label: string;
-  badge?: string;
-}) {
+  // Close when focus moves out of the wrapper entirely (keyboard users).
+  const handleBlur = (e: React.FocusEvent) => {
+    if (!wrapperRef.current?.contains(e.relatedTarget as Node)) {
+      setOpen(false);
+    }
+  };
+
   return (
-    <NextLink
-      href={href}
-      aria-label={label}
-      className="relative inline-flex h-10 w-10 items-center justify-center text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors"
+    <div
+      ref={wrapperRef}
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={handleBlur}
     >
-      {children}
-      {badge !== undefined && (
-        <span
+      <NextLink
+        href={item.href}
+        aria-haspopup="true"
+        aria-expanded={open}
+        className="inline-flex items-center gap-1 font-ui font-medium text-[15px] text-white hover:text-[var(--color-accent-brand)] transition-colors"
+      >
+        {t(item.label, lang)}
+        <ChevronDown
           aria-hidden="true"
-          className="absolute -top-0.5 -right-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--color-accent-brand)] px-1 text-[10px] font-medium leading-none text-[var(--color-bg)]"
-        >
-          {badge}
-        </span>
+          className={[
+            "size-3.5 transition-transform duration-200",
+            open ? "rotate-180" : "rotate-0",
+          ].join(" ")}
+        />
+      </NextLink>
+
+      {open && (
+        <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3 z-50 min-w-[14rem]">
+          <ul className="bg-[var(--color-card-bg)] border border-[var(--color-accent-brand)]/30 [filter:drop-shadow(0_18px_22px_rgba(0,0,0,0.55))] py-2">
+            {item.children?.map((child) => (
+              <li key={child.href}>
+                <NextLink
+                  href={child.href}
+                  className="block px-5 py-2.5 font-ui font-medium text-sm text-white hover:bg-[var(--color-accent-brand)] hover:text-[var(--color-bg)] transition-colors"
+                  onClick={() => setOpen(false)}
+                >
+                  {t(child.label, lang)}
+                </NextLink>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
-    </NextLink>
+    </div>
   );
 }
 

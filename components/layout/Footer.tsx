@@ -36,7 +36,8 @@ const address: Record<Lang, { line1: string; line2: string; phone: string; email
 const social: { href: string; label: string }[] = [
   { href: "https://www.youtube.com/", label: "YouTube" },
   { href: "https://www.instagram.com/", label: "Instagram" },
-  { href: "https://www.facebook.com/", label: "Facebook" },
+  { href: "https://www.facebook.com/franciscoherreramusic", label: "Facebook" },
+  { href: "https://www.facebook.com/musicainfantilfranciscoherrera", label: "Facebook · Niñ@s" },
   { href: "https://open.spotify.com/", label: "Spotify" },
   { href: "https://music.apple.com/", label: "Apple" },
   { href: "https://bandcamp.com/", label: "Bandcamp" },
@@ -99,34 +100,34 @@ export function Footer({ lang = "en" }: FooterProps) {
               <Link
                 href="/"
                 unstyled
-                className="font-heading text-lg font-semibold uppercase tracking-[0.2em] text-[var(--color-fg)] hover:text-[var(--color-accent-brand)] transition-colors block mb-4"
+                className="font-signature text-3xl leading-none whitespace-nowrap text-[var(--color-accent-brand)] [-webkit-text-stroke:0.75px_currentColor] hover:opacity-80 transition-opacity inline-block mb-5"
               >
-                <span className="text-[var(--color-accent-brand)]">F</span>rancisco
+                Francisco J. Herrera
               </Link>
-              <p className="text-[var(--color-muted-brand)] leading-relaxed text-sm mb-5">
+              <p className="text-white font-medium leading-relaxed text-sm mb-5">
                 {bio[lang]}
               </p>
-              <address className="not-italic text-sm text-[var(--color-muted-brand)] space-y-1">
+              <address className="not-italic text-sm font-medium text-white space-y-1">
                 <div>{a.line1}</div>
                 <div>{a.line2}</div>
                 <div>
-                  <Link href={`tel:${a.phone}`}>{a.phone}</Link>
+                  <Link href={`tel:${a.phone}`} className="text-white">{a.phone}</Link>
                 </div>
                 <div>
-                  <Link href={`mailto:${a.email}`}>{a.email}</Link>
+                  <Link href={`mailto:${a.email}`} className="text-white">{a.email}</Link>
                 </div>
               </address>
             </div>
 
             {/* Information links */}
             <nav aria-label="Information">
-              <Heading level={6} as={6} tone="fg" className="uppercase tracking-[0.2em] mb-4 !text-sm">
+              <h3 className="font-ui font-semibold uppercase tracking-[0.2em] text-sm text-[var(--color-fg)] mb-4">
                 {L.information}
-              </Heading>
-              <ul className="space-y-2 text-sm">
+              </h3>
+              <ul className="space-y-2 text-sm font-ui font-medium">
                 {informationLinks.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href}>{t(item.label, lang)}</Link>
+                    <Link href={item.href} className="text-white">{t(item.label, lang)}</Link>
                   </li>
                 ))}
               </ul>
@@ -134,13 +135,13 @@ export function Footer({ lang = "en" }: FooterProps) {
 
             {/* Account links */}
             <nav aria-label="Account">
-              <Heading level={6} as={6} tone="fg" className="uppercase tracking-[0.2em] mb-4 !text-sm">
+              <h3 className="font-ui font-semibold uppercase tracking-[0.2em] text-sm text-[var(--color-fg)] mb-4">
                 {L.account}
-              </Heading>
-              <ul className="space-y-2 text-sm">
+              </h3>
+              <ul className="space-y-2 text-sm font-ui font-medium">
                 {accountLinks.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href}>{t(item.label, lang)}</Link>
+                    <Link href={item.href} className="text-white">{t(item.label, lang)}</Link>
                   </li>
                 ))}
               </ul>
@@ -148,35 +149,35 @@ export function Footer({ lang = "en" }: FooterProps) {
 
             {/* Newsletter */}
             <div>
-              <Heading level={6} as={6} tone="fg" className="uppercase tracking-[0.2em] mb-4 !text-sm">
+              <h3 className="font-ui font-semibold uppercase tracking-[0.2em] text-sm text-[var(--color-fg)] mb-4">
                 {L.newsletter}
-              </Heading>
-              <p className="text-[var(--color-muted-brand)] text-sm mb-4">{L.newsletterCopy}</p>
+              </h3>
+              <p className="text-white font-medium text-sm mb-4">{L.newsletterCopy}</p>
               <form className="flex flex-col gap-3">
                 <input
                   type="email"
                   disabled
                   placeholder={L.emailPlaceholder}
                   aria-label={L.newsletter}
-                  className="border border-[var(--color-border-brand)] bg-transparent px-3 py-2 text-sm text-[var(--color-fg)] placeholder:text-[var(--color-muted-brand)] focus:border-[var(--color-accent-brand)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
+                  className="border border-white/35 bg-transparent px-3 py-2 text-sm text-white placeholder:text-white/55 focus:border-[var(--color-accent-brand)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-80"
                 />
                 <button
                   type="submit"
                   disabled
-                  className="font-heading uppercase tracking-[0.18em] border border-[var(--color-button-border)] bg-[var(--color-button-bg)] text-[var(--color-button-fg)] px-[var(--button-padding-x)] py-[var(--button-padding-y)] text-xs hover:bg-[var(--color-button-hover-bg)] hover:text-[var(--color-button-hover-fg)] transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+                  className="font-ui font-semibold uppercase tracking-[0.18em] border border-[var(--color-button-border)] bg-[var(--color-button-bg)] text-[var(--color-button-fg)] px-[var(--button-padding-x)] py-[var(--button-padding-y)] text-xs hover:bg-[var(--color-button-hover-bg)] hover:text-[var(--color-button-hover-fg)] transition-colors disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {L.subscribe}
                 </button>
               </form>
 
               <div className="mt-6">
-                <div className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-muted-brand)] mb-2">
+                <div className="font-ui font-semibold text-[10px] uppercase tracking-[0.2em] text-white mb-2">
                   {L.followUs}
                 </div>
-                <ul className="flex flex-wrap gap-x-3 gap-y-2 text-xs uppercase tracking-[0.18em]">
+                <ul className="flex flex-wrap gap-x-3 gap-y-2 text-xs font-ui font-medium">
                   {social.map((s) => (
                     <li key={s.href}>
-                      <Link href={s.href} target="_blank" rel="noreferrer">
+                      <Link href={s.href} target="_blank" rel="noreferrer" className="text-white">
                         {s.label}
                       </Link>
                     </li>
@@ -191,25 +192,39 @@ export function Footer({ lang = "en" }: FooterProps) {
       {/* Bottom bar — Guitare site-footer__bottom (lines 90-140) */}
       <div className="border-t border-[var(--color-border-brand)]">
         <Container>
-          <div className="flex flex-col items-start justify-between gap-4 py-6 text-xs text-[var(--color-muted-brand)] md:flex-row md:items-center">
-            <span>
-              {L.copyright} <span className="opacity-70">— {year}</span>
+          <div className="flex flex-col items-start justify-between gap-4 py-6 text-xs font-ui font-medium text-white md:flex-row md:items-center">
+            <span className="flex flex-col sm:flex-row sm:items-center sm:gap-x-3 sm:gap-y-0 gap-y-1">
+              <span>
+                {L.copyright} <span className="opacity-70">— {year}</span>
+              </span>
+              <span className="hidden sm:inline opacity-50" aria-hidden="true">·</span>
+              <span>
+                {lang === "en" ? "Designed & developed by " : "Diseñado y desarrollado por "}
+                <a
+                  href="https://www.stynerdev.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--color-accent-brand)] hover:underline"
+                >
+                  stynerdev
+                </a>
+              </span>
             </span>
             <div className="flex items-center gap-4">
-              <span className="hidden sm:inline text-[10px] uppercase tracking-[0.2em] opacity-70">
+              <span className="hidden sm:inline font-ui font-semibold text-[10px] uppercase tracking-[0.2em] opacity-70">
                 {L.weAccept}
               </span>
               <ul className="flex items-center gap-2" aria-label="Payment methods">
                 {["VISA", "MC", "AMEX", "PAYPAL"].map((method) => (
                   <li
                     key={method}
-                    className="border border-[var(--color-border-brand)] px-2 py-1 text-[10px] tracking-[0.15em] font-heading uppercase"
+                    className="border border-[var(--color-border-brand)] px-2 py-1 text-[10px] tracking-[0.15em] font-ui font-semibold uppercase"
                   >
                     {method}
                   </li>
                 ))}
               </ul>
-              <span className="font-heading uppercase tracking-[0.2em] flex items-center gap-2 ml-2 pl-4 border-l border-[var(--color-border-brand)]">
+              <span className="font-ui font-semibold uppercase tracking-[0.2em] flex items-center gap-2 ml-2 pl-4 border-l border-[var(--color-border-brand)]">
                 <span className={lang === "en" ? "text-[var(--color-accent-brand)]" : ""}>EN</span>
                 <span className="opacity-50">|</span>
                 <span className={lang === "es" ? "text-[var(--color-accent-brand)]" : ""}>ES</span>

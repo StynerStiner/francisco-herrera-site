@@ -83,11 +83,15 @@ export function VideoBanner({ content, lang = "en" }: Props) {
         <div aria-hidden="true" className="absolute inset-0 bg-black/55" />
 
         <div className="relative h-full mx-auto max-w-[var(--container-content)] px-6 flex flex-col items-center justify-center text-center">
-          <span className="font-heading text-xs sm:text-sm uppercase tracking-[0.4em] text-white mb-4">
+          <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4">
             {t(content.eyebrow, lang)}
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl !text-white mb-3 font-normal">
-            {t(content.title, lang)}
+          <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl !text-[var(--color-fg)] mb-3 uppercase tracking-tight leading-[0.95]">
+            Saber Ante
+            <br />
+            <span className="italic font-light text-[var(--color-accent-brand)]">
+              La Migra.
+            </span>
           </h2>
           <p className="text-[var(--color-fg)]/80 text-base lg:text-lg mb-10">
             {t(content.caption, lang)}

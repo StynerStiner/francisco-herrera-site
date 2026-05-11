@@ -20,23 +20,39 @@ export function DealBanner({ content, lang = "en" }: Props) {
   return (
     <section
       aria-label={t(content.title, lang)}
-      className="relative w-full overflow-hidden"
+      className="relative isolate w-full bg-[var(--color-bg-deeper)] section-atmospheric overflow-hidden border-t border-black"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={content.background}
+        src="/images/photos/2.png"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 -z-10 h-full w-full object-cover"
+        style={{ objectPosition: "center 15%" }}
+        loading="lazy"
       />
-      <div aria-hidden="true" className="absolute inset-0 bg-black/65" />
+      {/* Deeper-tobacco scrim — mirrors /epk Contact section. */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#1f1b10]/85" />
+      {/* Hard black divider with a centered gold accent — the band reads
+          as a deliberate architectural line; the small gold rule in the
+          middle adds an editorial flourish (chapter-break feel). */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-7 lg:h-9 bg-black z-10 flex items-center justify-center"
+      >
+        <span className="block h-px w-48 lg:w-72 bg-[var(--color-accent-brand)]" />
+      </div>
       <div className="relative mx-auto max-w-[var(--container-content)] px-6 py-24 lg:py-28 text-center">
         <div className="mx-auto max-w-3xl">
-          <span className="font-heading text-xs sm:text-sm uppercase tracking-[0.4em] text-white mb-4 inline-block">
+          <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4 inline-block">
             {t(content.eyebrow, lang)}
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl !text-white mb-6 font-normal !leading-tight">
-            {t(content.title, lang)}
+          <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl !text-[var(--color-fg)] mb-6 uppercase tracking-tight !leading-[0.95]">
+            {lang === "en" ? "Music as" : "Música como"}
+            <br />
+            <span className="italic font-light text-[var(--color-accent-brand)]">
+              {lang === "en" ? "public art." : "arte público."}
+            </span>
           </h2>
           <p className="text-[var(--color-fg)]/85 text-base sm:text-lg mb-8 leading-relaxed">
             {t(content.body, lang)}

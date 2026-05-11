@@ -48,22 +48,39 @@ export function GridBanner({ content, lang = "en" }: Props) {
       className="relative w-full overflow-hidden py-14 lg:py-16"
       aria-label={t(content.title, lang)}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={content.background}
-        alt=""
+      {/* Looping background video — muted + autoplay + playsInline so it
+          works across mobile/desktop without needing user interaction.
+          The static `content.background` image stays as the poster so the
+          frame is filled while the video buffers. */}
+      <video
+        src="/video/1.mp4"
+        poster={content.background}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div aria-hidden="true" className="absolute inset-0 bg-black/55" />
+      {/* Match homepage hero treatment: light uniform tint + symmetric side-vignette */}
+      <div aria-hidden="true" className="absolute inset-0 bg-black/15" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 [background:linear-gradient(to_right,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.30)_15%,rgba(0,0,0,0.10)_38%,rgba(0,0,0,0.05)_62%,rgba(0,0,0,0.25)_88%,rgba(0,0,0,0.50)_100%)]"
+      />
 
       <div className="relative mx-auto max-w-[var(--container-content)] px-6">
         <div className="text-center mb-8 max-w-3xl mx-auto">
-          <span className="font-heading text-xs uppercase tracking-[0.4em] text-white mb-3 inline-block">
+          <span className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
             {t(content.eyebrow, lang)}
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl !text-white font-normal">
-            {t(content.title, lang)}
+          <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl !text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
+            {lang === "en" ? "Three albums" : "Tres álbumes"}
+            <br />
+            <span className="italic font-light text-[var(--color-accent-brand)]">
+              {lang === "en" ? "to start with." : "para comenzar."}
+            </span>
           </h2>
         </div>
 
@@ -86,8 +103,8 @@ export function GridBanner({ content, lang = "en" }: Props) {
                   className={[
                     "px-4 sm:px-5 py-2 font-heading text-xs uppercase tracking-[0.18em] border transition-colors max-w-[16rem] truncate",
                     active
-                      ? "bg-[var(--color-accent-brand)] text-[var(--color-bg)] border-[var(--color-accent-brand)]"
-                      : "bg-transparent text-[var(--color-fg)] border-[var(--color-accent-brand)]/40 hover:border-[var(--color-accent-brand)]",
+                      ? "bg-[var(--color-accent-brand)] text-[var(--color-bg)] border-[var(--color-accent-brand)] [text-shadow:none]"
+                      : "bg-black/45 backdrop-blur-sm text-white border-[var(--color-accent-brand)]/50 hover:bg-black/60 hover:border-[var(--color-accent-brand)] [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]",
                   ].join(" ")}
                 >
                   {t(card.title, lang)}

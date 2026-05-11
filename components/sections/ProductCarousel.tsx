@@ -74,9 +74,20 @@ export function ProductCarousel({ content, lang = "en" }: Props) {
   return (
     <section
       // 120/115px vertical padding from templates/index.json "padding":"120,115"
-      className="relative bg-[var(--color-bg)] pt-[120px] pb-[115px] overflow-hidden"
+      className="relative isolate bg-[var(--color-bg-warm)] section-atmospheric pt-[120px] pb-[115px] overflow-hidden border-t border-black"
       aria-label={t(content.title, lang)}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/facebook/488006864_18386482891113352_8570978093327498432_n.jpg"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 h-full w-full object-cover"
+        style={{ objectPosition: "center 40%" }}
+        loading="lazy"
+      />
+      {/* Warm-tobacco scrim — same recipe as /epk Bio section. */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#2a2318]/85" />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-4 top-6 lg:left-12 lg:top-10 z-0 select-none"
@@ -88,11 +99,15 @@ export function ProductCarousel({ content, lang = "en" }: Props) {
 
       <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-6">
         <div className="text-center mb-12 max-w-3xl mx-auto">
-          <span className="font-heading text-xs sm:text-sm uppercase tracking-[0.4em] text-white mb-3 inline-block">
+          <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
             {t(content.eyebrow, lang)}
           </span>
-          <h2 className="font-signature text-5xl sm:text-6xl lg:text-7xl text-[var(--color-accent-brand)] mb-5 leading-tight text-balance">
-            {t(content.title, lang)}
+          <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] mb-5 uppercase tracking-tight leading-[0.95] text-balance">
+            {lang === "en" ? "Concert" : "Carteles de"}
+            <br />
+            <span className="italic font-light text-[var(--color-accent-brand)]">
+              {lang === "en" ? "posters." : "conciertos."}
+            </span>
           </h2>
           <p className="text-[var(--color-muted-brand)] text-base lg:text-lg leading-relaxed">
             {t(content.description, lang)}
