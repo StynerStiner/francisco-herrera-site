@@ -31,7 +31,7 @@ export function Header({ lang = "en" }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   return (
-    <header className="relative z-40 w-full bg-[var(--color-bg)] border-b border-[var(--color-border-brand)]">
+    <header className="sticky top-0 z-40 w-full bg-[var(--color-bg)] border-b border-[var(--color-border-brand)]">
       {/* Announcement bar — Guitare ".dt-sc-header-top-bar" (header.liquid 137-165) */}
       {announcementOpen && (
         <div className="bg-[var(--color-button-bg)] border-b border-[var(--color-border-brand)]">

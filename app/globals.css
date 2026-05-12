@@ -22,6 +22,14 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Hero image fade-in — the one piece of motion the homepage hero opts
+   into. Gentle zoom-out from 1.02x → 1.0x while the photo settles.
+   Honors prefers-reduced-motion via the motion-safe: utility on the <Image>. */
+@keyframes hero-fade {
+  from { opacity: 0; transform: scale(1.02); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
 /* Native cross-document View Transitions — gives the click between blog
    articles a smooth crossfade instead of the default white flash. Browsers
    that don't support this feature (older Firefox, Safari < 18) fall back
