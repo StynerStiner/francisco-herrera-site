@@ -22,12 +22,14 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero image fade-in — the one piece of motion the homepage hero opts
-   into. Gentle zoom-out from 1.02x → 1.0x while the photo settles.
-   Honors prefers-reduced-motion via the motion-safe: utility on the <Image>. */
+/* Hero image settle — the one piece of motion the homepage hero opts into.
+   Gentle zoom-out from 1.03x → 1.0x while the photo settles. Image stays
+   fully opaque the entire time so it can register as the LCP element from
+   frame zero (animating opacity from 0 disqualifies it). Honors
+   prefers-reduced-motion via the motion-safe: utility on the <Image>. */
 @keyframes hero-fade {
-  from { opacity: 0; transform: scale(1.02); }
-  to   { opacity: 1; transform: scale(1); }
+  from { transform: scale(1.03); }
+  to   { transform: scale(1); }
 }
 
 /* Native cross-document View Transitions — gives the click between blog

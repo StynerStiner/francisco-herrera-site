@@ -54,7 +54,7 @@ const featuredAlbums = [
   {
     title: "Fuerza de la Raíz",
     year: "2019",
-    image: "/images/albums/Fuerza-de-la-Raíz.png",
+    image: "/images/albums/Fuerza-de-la-Raiz.png",
     href: "/music",
     alt: { en: "Fuerza de la Raíz album cover", es: "Portada del álbum Fuerza de la Raíz" },
   },
@@ -135,8 +135,9 @@ function HeroSection() {
         alt="Francisco Herrera with his guitar"
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
-        className="object-cover object-center motion-safe:animate-[hero-fade_700ms_ease-out_both]"
+        className="object-cover object-center"
       />
       {/* Vignette + bottom-anchored gradient so the overlay copy stays
           legible against any focal point of the photo. */}
