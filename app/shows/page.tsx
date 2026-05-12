@@ -191,7 +191,7 @@ export default async function ShowsPage({ searchParams }: PageProps) {
       <Header lang={lang} />
       <main>
         <section
-          className="relative isolate overflow-hidden pt-32 lg:pt-44 pb-20 lg:pb-28"
+          className="relative isolate overflow-hidden pt-24 sm:pt-32 lg:pt-44 pb-14 sm:pb-20 lg:pb-28"
           aria-label={lang === "en" ? "Past Events" : "Eventos Pasados"}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}

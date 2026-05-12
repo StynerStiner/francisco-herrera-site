@@ -112,7 +112,7 @@ export default function EpkPage() {
             visual impact (fullscreen photo + huge tagline) reads the
             same without the sticky mechanic. */}
         <section
-          className="section-atmospheric relative isolate overflow-hidden h-screen min-h-[640px] flex items-end pb-16 lg:pb-24 bg-[var(--color-bg-warm)]"
+          className="section-atmospheric relative isolate overflow-hidden min-h-[480px] sm:min-h-[640px] h-[72vh] sm:h-screen flex items-end pb-10 sm:pb-16 lg:pb-24 bg-[var(--color-bg-warm)]"
           aria-label="Electronic Press Kit — Francisco J. Herrera"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -138,25 +138,25 @@ export default function EpkPage() {
           {/* Cursive watermark in the corner (Francisco brand pattern). */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute right-4 top-6 lg:right-12 lg:top-10 z-0 select-none"
+            className="pointer-events-none absolute right-3 top-4 sm:right-4 sm:top-6 lg:right-12 lg:top-10 z-0 select-none"
           >
-            <p className="font-signature text-7xl lg:text-9xl text-[var(--color-accent-brand)]/35 -rotate-12 leading-none [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
+            <p className="font-signature text-5xl sm:text-7xl lg:text-9xl text-[var(--color-accent-brand)]/35 -rotate-12 leading-none [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
               Prensa
             </p>
           </div>
 
-          <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-6 text-center w-full epk-fade-up-slow">
-            <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-white mb-4 inline-block">
+          <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-4 sm:px-6 text-center w-full epk-fade-up-slow">
+            <span className="font-ui font-semibold text-[11px] sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.4em] text-white mb-3 sm:mb-4 inline-block">
               EPK / FRANCISCO J. HERRERA
             </span>
-            <h1 className="font-heading font-black text-5xl sm:text-6xl lg:text-8xl text-[var(--color-fg)] mb-6 leading-[0.95] tracking-tight uppercase [text-shadow:0_2px_24px_rgba(0,0,0,0.55)]">
+            <h1 className="font-heading font-black text-4xl sm:text-6xl lg:text-8xl text-[var(--color-fg)] mb-5 sm:mb-6 leading-[0.95] tracking-tight uppercase [text-shadow:0_2px_24px_rgba(0,0,0,0.55)]">
               The migrant journey,
               <br />
               <span className="italic font-light text-[var(--color-accent-brand)]">
                 set to the guitar.
               </span>
             </h1>
-            <p className="text-white/90 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
+            <p className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed max-w-3xl mx-auto [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
               Bilingual guitarist and singer-songwriter. Four decades of
               cantos for liberation, migration, family, and faith — in
               churches, union halls, classrooms, and on the streets.
@@ -185,21 +185,21 @@ export default function EpkPage() {
           {/* bio-opacity-layer — warm-tobacco scrim at 55% per westones. */}
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#2a2318]/85" />
 
-          <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-6 py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-10 lg:gap-20">
+          <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-4 sm:px-6 py-20 sm:py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-8 sm:gap-10 lg:gap-20">
             <div className="lg:text-right epk-fade-up">
-              <p className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3">
+              <p className="font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[var(--color-accent-brand)] mb-3">
                 Est. 1975
               </p>
             </div>
             <div className="lg:text-right epk-fade-up-slow">
-              <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase leading-[0.95] mb-8 tracking-tight">
+              <h2 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase leading-[0.95] mb-6 sm:mb-8 tracking-tight">
                 Cantos
                 <br />
                 <span className="italic font-light text-[var(--color-accent-brand)]">
                   from the border.
                 </span>
               </h2>
-              <p className="font-body text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/95 mb-5">
+              <p className="font-body text-sm sm:text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/95 mb-5">
                 Francisco Herrera is a boundary-crossing artist whose music
                 blends cultural pride with a call for justice. Born in
                 Calexico, he began singing rancheras and ballads alongside
@@ -207,7 +207,7 @@ export default function EpkPage() {
                 expanded into rhythm and blues, jazz, rock, punk, pop, and
                 gospel — an eclectic style that knows no borders.
               </p>
-              <p className="font-body text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/85">
+              <p className="font-body text-sm sm:text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/85">
                 Inspired by Archbishop Óscar Romero and the rise of Base
                 Christian Communities, his music champions human rights and
                 amplifies working people&apos;s voices. Live performance is
@@ -237,23 +237,23 @@ export default function EpkPage() {
           />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#0f0f0f]/80" />
 
-          <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-6 py-24 lg:py-32">
-            <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95] mb-14 epk-fade-up">
+          <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-4 sm:px-6 py-20 sm:py-24 lg:py-32">
+            <h2 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95] mb-10 sm:mb-14 epk-fade-up">
               {lang === "en" ? "Recent Performances" : "Presentaciones Recientes"}
             </h2>
             <ul className="flex flex-col gap-0">
               {RECENT_PERFORMANCES.map((e, i) => (
                 <li
                   key={`${e.dateLabel}-${i}`}
-                  className="grid grid-cols-1 sm:grid-cols-[140px_minmax(0,1fr)] lg:grid-cols-[160px_minmax(0,1fr)_minmax(0,1.2fr)] items-center gap-y-2 gap-x-6 py-5 border-b border-[var(--color-border-brand)] last:border-b-0 epk-fade-up"
+                  className="grid grid-cols-1 md:grid-cols-[140px_minmax(0,1fr)_minmax(0,1.2fr)] lg:grid-cols-[160px_minmax(0,1fr)_minmax(0,1.2fr)] items-start md:items-center gap-y-1 gap-x-4 md:gap-x-6 py-4 sm:py-5 border-b border-[var(--color-border-brand)] last:border-b-0 epk-fade-up"
                 >
-                  <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.25em] text-[var(--color-accent-brand)] tabular-nums">
+                  <span className="font-ui font-semibold text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[var(--color-accent-brand)] tabular-nums">
                     {e.dateLabel}
                   </span>
-                  <span className="font-heading text-lg sm:text-xl uppercase tracking-wide text-[var(--color-fg)]">
+                  <span className="font-heading text-base sm:text-lg md:text-xl uppercase tracking-wide text-[var(--color-fg)] break-words">
                     {e.city}
                   </span>
-                  <span className="font-body text-sm sm:text-base italic text-[var(--color-fg)]/80 lg:text-right">
+                  <span className="font-body text-sm sm:text-base italic text-[var(--color-fg)]/80 md:text-right break-words">
                     {e.venue}
                   </span>
                 </li>
@@ -276,20 +276,20 @@ export default function EpkPage() {
             its discography on cool-neutral dark; we use warm tobacco to
             keep the site's primary tonal partner. */}
         <section
-          className="bg-[var(--color-bg-warm)] section-atmospheric py-24 lg:py-32 border-t border-black"
+          className="bg-[var(--color-bg-warm)] section-atmospheric py-20 sm:py-24 lg:py-32 border-t border-black"
           aria-label={lang === "en" ? "Discography" : "Discografía"}
         >
-          <div className="mx-auto max-w-[var(--container-content)] px-6">
-            <div className="mb-14 lg:mb-16 max-w-3xl epk-fade-up">
-              <p className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3">
+          <div className="mx-auto max-w-[var(--container-content)] px-4 sm:px-6">
+            <div className="mb-10 sm:mb-14 lg:mb-16 max-w-3xl epk-fade-up">
+              <p className="font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[var(--color-accent-brand)] mb-3">
                 {lang === "en" ? "Records / Discos" : "Discos / Records"}
               </p>
-              <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
+              <h2 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
                 {lang === "en" ? "Six albums" : "Seis álbumes"}
                 <span className="italic font-light text-[var(--color-accent-brand)]">.</span>
               </h2>
             </div>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
+            <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-8">
               {ALBUMS.map((album) => (
                 <li key={album.id} className="text-center epk-fade-up">
                   <NextLink href={`/store/${album.id}`} className="group block">
@@ -342,12 +342,12 @@ export default function EpkPage() {
           />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#1f1b10]/85" />
 
-          <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-6 py-24 lg:py-32">
-            <div className="mb-12 lg:mb-14 max-w-3xl epk-fade-up">
-              <p className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3">
+          <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-4 sm:px-6 py-20 sm:py-24 lg:py-32">
+            <div className="mb-10 sm:mb-12 lg:mb-14 max-w-3xl epk-fade-up">
+              <p className="font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[var(--color-accent-brand)] mb-3">
                 {lang === "en" ? "Listen / Escuchar" : "Escuchar / Listen"}
               </p>
-              <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
+              <h2 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
                 Amor Sin Papeles
                 <span className="italic font-light text-[var(--color-accent-brand)]">.</span>
               </h2>
@@ -355,7 +355,7 @@ export default function EpkPage() {
 
             <div className="max-w-3xl epk-fade-up-slow">
               {/* Featured track player UI — visual play button + track meta. */}
-              <div className="border border-[var(--color-border-brand)] bg-[var(--color-bg)]/70 backdrop-blur-sm p-4 mb-6">
+              <div className="border border-[var(--color-border-brand)] bg-[var(--color-bg)]/70 backdrop-blur-sm p-3 sm:p-4 mb-6">
                 <div className="flex items-center gap-3 mb-3">
                   <a
                     href={LISTEN_HREF}
@@ -385,15 +385,15 @@ export default function EpkPage() {
                 {FEATURED_TRACKS.map((track) => (
                   <li
                     key={track.n}
-                    className="flex items-center gap-3 sm:gap-4 py-3 border-b border-[var(--color-border-brand)] hover:bg-[var(--color-bg-deeper)]/50 transition-colors"
+                    className="flex items-center gap-2 sm:gap-4 py-3 border-b border-[var(--color-border-brand)] hover:bg-[var(--color-bg-deeper)]/50 transition-colors"
                   >
-                    <span className="font-heading text-sm text-[var(--color-accent-brand)] w-6 shrink-0 tabular-nums">
+                    <span className="font-heading text-sm text-[var(--color-accent-brand)] w-5 sm:w-6 shrink-0 tabular-nums">
                       {track.n}
                     </span>
                     <p className="font-body text-sm lg:text-base text-white flex-1 min-w-0 truncate">
                       {track.title}
                     </p>
-                    <span className="text-xs text-[var(--color-muted-brand)] shrink-0 tabular-nums">
+                    <span className="text-[11px] sm:text-xs text-[var(--color-muted-brand)] shrink-0 tabular-nums">
                       {track.duration}
                     </span>
                     <a
@@ -410,19 +410,21 @@ export default function EpkPage() {
                 ))}
               </ol>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3">
                 <a
                   href={LISTEN_HREF}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-ui font-semibold text-xs uppercase tracking-[0.2em] bg-[var(--color-accent-brand)] text-[var(--color-bg)] hover:bg-[var(--color-fg)] transition-colors px-6 py-3"
+                  className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] bg-[var(--color-accent-brand)] text-[var(--color-bg)] hover:bg-[var(--color-fg)] transition-colors px-5 sm:px-6 py-3 text-center"
                 >
-                  <Headphones className="size-4" aria-hidden="true" />
-                  {lang === "en" ? "Listen on franciscoherreramusic.com" : "Escuchar en franciscoherreramusic.com"}
+                  <Headphones className="size-4 shrink-0" aria-hidden="true" />
+                  <span className="break-words">
+                    {lang === "en" ? "Listen on franciscoherreramusic.com" : "Escuchar en franciscoherreramusic.com"}
+                  </span>
                 </a>
                 <NextLink
                   href="/store"
-                  className="inline-flex items-center gap-2 font-ui font-semibold text-xs uppercase tracking-[0.2em] border border-[var(--color-accent-brand)]/60 text-white hover:bg-[var(--color-accent-brand)] hover:text-[var(--color-bg)] hover:border-[var(--color-accent-brand)] transition-colors px-6 py-3"
+                  className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] border border-[var(--color-accent-brand)]/60 text-white hover:bg-[var(--color-accent-brand)] hover:text-[var(--color-bg)] hover:border-[var(--color-accent-brand)] transition-colors px-5 sm:px-6 py-3 text-center"
                 >
                   {lang === "en" ? "All recordings" : "Todas las grabaciones"}
                 </NextLink>
@@ -459,25 +461,25 @@ export default function EpkPage() {
             Westones .section.cta pattern: centered h2 + button on
             tertiary-dark. Brief, declarative, single-purpose. */}
         <section
-          className="bg-[var(--color-bg-deeper)] section-atmospheric py-24 lg:py-32 border-t border-black"
+          className="bg-[var(--color-bg-deeper)] section-atmospheric py-20 sm:py-24 lg:py-32 border-t border-black"
           aria-label={lang === "en" ? "Book Francisco" : "Contratar a Francisco"}
         >
-          <div className="mx-auto max-w-3xl px-6 text-center epk-fade-up-slow">
-            <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95] mb-4">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center epk-fade-up-slow">
+            <h2 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95] mb-4">
               {lang === "en" ? "Let's bring these songs" : "Traigamos estos cantos"}
               <br />
               <span className="italic font-light text-[var(--color-accent-brand)]">
                 {lang === "en" ? "to your stage." : "a su escenario."}
               </span>
             </h2>
-            <p className="font-body text-base lg:text-lg text-[var(--color-fg)]/80 leading-relaxed mb-10 max-w-xl mx-auto">
+            <p className="font-body text-sm sm:text-base lg:text-lg text-[var(--color-fg)]/80 leading-relaxed mb-8 sm:mb-10 max-w-xl mx-auto">
               {lang === "en"
                 ? "Concert halls, schools, churches, festivals, community gatherings. Solo voice and guitar, full band, or duets with collaborators."
                 : "Salas de concierto, escuelas, iglesias, festivales, encuentros comunitarios. Voz y guitarra solo, banda completa, o dúos con colaboradores."}
             </p>
             <NextLink
               href="/booking"
-              className="inline-flex items-center gap-2 font-ui font-semibold text-sm uppercase tracking-[0.25em] bg-[var(--color-accent-brand)] text-[var(--color-bg)] hover:bg-[var(--color-fg)] transition-colors px-8 py-4"
+              className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] bg-[var(--color-accent-brand)] text-[var(--color-bg)] hover:bg-[var(--color-fg)] transition-colors px-6 sm:px-8 py-3 sm:py-4"
             >
               {lang === "en" ? "Book Francisco" : "Contratar"}
             </NextLink>
@@ -532,46 +534,46 @@ export default function EpkPage() {
           />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#1f1b10]/85" />
 
-          <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-6 py-24 lg:py-32 text-center">
-            <p className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 epk-fade-up">
+          <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-4 sm:px-6 py-20 sm:py-24 lg:py-32 text-center">
+            <p className="font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 epk-fade-up">
               {lang === "en" ? "Contact / Contáctenos" : "Contáctenos / Contact"}
             </p>
-            <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95] mb-14 lg:mb-16 epk-fade-up">
+            <h2 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95] mb-10 sm:mb-14 lg:mb-16 epk-fade-up">
               {lang === "en" ? "Get in touch" : "Pónganse en contacto"}
               <span className="italic font-light text-[var(--color-accent-brand)]">.</span>
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mb-16 max-w-4xl mx-auto">
-              <div className="epk-fade-up">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 max-w-4xl mx-auto">
+              <div className="epk-fade-up min-w-0">
                 <a
                   href="mailto:booking@franciscoherrera.com"
-                  className="font-body text-base lg:text-lg text-white hover:text-[var(--color-accent-brand)] transition-colors block mb-3 break-words"
+                  className="font-body text-sm sm:text-base lg:text-lg text-white hover:text-[var(--color-accent-brand)] transition-colors block mb-3 break-all sm:break-words"
                 >
                   booking@franciscoherrera.com
                 </a>
-                <p className="font-ui font-semibold text-xs uppercase tracking-[0.25em] text-[var(--color-accent-brand)]">
+                <p className="font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[var(--color-accent-brand)]">
                   {lang === "en" ? "Booking" : "Contrataciones"}
                 </p>
               </div>
-              <div className="epk-fade-up">
+              <div className="epk-fade-up min-w-0">
                 <a
                   href="mailto:press@franciscoherrera.com"
-                  className="font-body text-base lg:text-lg text-white hover:text-[var(--color-accent-brand)] transition-colors block mb-3 break-words"
+                  className="font-body text-sm sm:text-base lg:text-lg text-white hover:text-[var(--color-accent-brand)] transition-colors block mb-3 break-all sm:break-words"
                 >
                   press@franciscoherrera.com
                 </a>
-                <p className="font-ui font-semibold text-xs uppercase tracking-[0.25em] text-[var(--color-accent-brand)]">
+                <p className="font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[var(--color-accent-brand)]">
                   {lang === "en" ? "Press" : "Prensa"}
                 </p>
               </div>
-              <div className="epk-fade-up">
+              <div className="epk-fade-up min-w-0">
                 <a
                   href="mailto:info@franciscoherrera.com"
-                  className="font-body text-base lg:text-lg text-white hover:text-[var(--color-accent-brand)] transition-colors block mb-3 break-words"
+                  className="font-body text-sm sm:text-base lg:text-lg text-white hover:text-[var(--color-accent-brand)] transition-colors block mb-3 break-all sm:break-words"
                 >
                   info@franciscoherrera.com
                 </a>
-                <p className="font-ui font-semibold text-xs uppercase tracking-[0.25em] text-[var(--color-accent-brand)]">
+                <p className="font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[var(--color-accent-brand)]">
                   {lang === "en" ? "General" : "General"}
                 </p>
               </div>
@@ -580,7 +582,7 @@ export default function EpkPage() {
             {/* Credits / starring block — westones convention, in
                 Francisco's voice. Honors collaborators. */}
             <div className="max-w-2xl mx-auto epk-fade-up-slow">
-              <p className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-5">
+              <p className="font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[var(--color-accent-brand)] mb-5">
                 STARRING
               </p>
               <p className="font-body italic text-sm lg:text-base leading-relaxed text-[var(--color-fg)]/80 mb-3">
@@ -598,7 +600,7 @@ export default function EpkPage() {
                   ? "Archbishop Óscar Romero — for showing what theology of liberation looks like in practice."
                   : "Monseñor Óscar Romero — por mostrar la teología de la liberación en práctica."}
               </p>
-              <p className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-fg)]/70">
+              <p className="font-ui font-semibold text-[11px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.4em] text-[var(--color-fg)]/70">
                 {lang === "en" ? "Directed by faith. Produced by community." : "Dirigido por la fe. Producido por la comunidad."}
               </p>
             </div>

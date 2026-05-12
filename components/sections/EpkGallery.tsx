@@ -390,21 +390,21 @@ export function EpkGallery({
       {sideWatermark && (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute left-4 top-6 lg:left-12 lg:top-10 z-0 select-none"
+          className="pointer-events-none absolute left-3 top-4 sm:left-4 sm:top-6 lg:left-12 lg:top-10 z-0 select-none"
         >
-          <p className="font-signature text-8xl lg:text-[10rem] text-[var(--color-accent-brand)]/25 -rotate-12 leading-none [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
+          <p className="font-signature text-6xl sm:text-8xl lg:text-[10rem] text-[var(--color-accent-brand)]/25 -rotate-12 leading-none [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
             {sideWatermark}
           </p>
         </div>
       )}
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
-      <div className="relative mx-auto max-w-[var(--container-content)] px-6">
-        <div className="text-center mb-10 lg:mb-14 max-w-3xl mx-auto epk-fade-up">
-          <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
+      <div className="relative mx-auto max-w-[var(--container-content)] px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-10 lg:mb-14 max-w-3xl mx-auto epk-fade-up">
+          <span className="font-ui font-semibold text-[11px] sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
             {eyebrow}
           </span>
           {title && (
-            <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] mb-5 uppercase tracking-tight leading-[0.95]">
+            <h2 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] mb-5 uppercase tracking-tight leading-[0.95]">
               {title}
               {titleAccent ? (
                 <>
@@ -418,7 +418,7 @@ export function EpkGallery({
               )}
             </h2>
           )}
-          <p className="text-[var(--color-fg)]/85 text-base lg:text-lg leading-relaxed">
+          <p className="text-[var(--color-fg)]/85 text-sm sm:text-base lg:text-lg leading-relaxed">
             {lead}
           </p>
         </div>

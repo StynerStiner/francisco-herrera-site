@@ -132,7 +132,7 @@ export default function AboutPage() {
             Vintage Peabody's photo (young Francisco) — anchors the page in
             decades of history before the bio kicks in. */}
         <section
-          className="relative isolate overflow-hidden pt-32 lg:pt-44 pb-20 lg:pb-28 min-h-[55vh] lg:min-h-[60vh] flex items-end"
+          className="relative isolate overflow-hidden pt-24 sm:pt-32 lg:pt-44 pb-14 sm:pb-20 lg:pb-28 min-h-[44vh] sm:min-h-[55vh] lg:min-h-[60vh] flex items-end"
           aria-label="About Francisco Herrera"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -89,7 +89,7 @@ export default function BookingPage() {
             here previously, now wrapped in a real bilingual hero with
             full overlays and the "En Vivo" cursive watermark. */}
         <section
-          className="relative isolate overflow-hidden pt-32 lg:pt-44 pb-20 lg:pb-28 min-h-[55vh] lg:min-h-[60vh] flex items-end"
+          className="relative isolate overflow-hidden pt-24 sm:pt-32 lg:pt-44 pb-14 sm:pb-20 lg:pb-28 min-h-[44vh] sm:min-h-[55vh] lg:min-h-[60vh] flex items-end"
           aria-label="Contact and book Francisco J. Herrera"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}

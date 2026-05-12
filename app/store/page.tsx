@@ -64,7 +64,7 @@ export default function StorePage() {
       <Header lang={lang} />
       <main>
         <section
-          className="relative isolate overflow-hidden pt-32 lg:pt-44 pb-20 lg:pb-28 border-b border-[var(--color-border-brand)]"
+          className="relative isolate overflow-hidden pt-24 sm:pt-32 lg:pt-44 pb-14 sm:pb-20 lg:pb-28 border-b border-[var(--color-border-brand)]"
           aria-label={t(storeContent.hero.title, lang)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}

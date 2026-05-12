@@ -98,7 +98,15 @@ export function HeroSlideshow({ slides, lang = "en", autoplay = false }: Props) 
               role="group"
               aria-roledescription="slide"
             >
-              <div className="relative h-[350px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[780px] bg-black">
+              <div
+                className={[
+                  "relative bg-black",
+                  // Honor Migrante slide gets a taller mobile crop only;
+                  // every other slide keeps the original 350px mobile height.
+                  slide.id === "honor-migrante" ? "h-[460px]" : "h-[350px]",
+                  "sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[780px]",
+                ].join(" ")}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={slide.image}
