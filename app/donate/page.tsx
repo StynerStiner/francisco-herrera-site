@@ -1,8 +1,12 @@
 import { StubPage } from "@/components/layout/StubPage";
+import { getLang } from "@/lib/i18n-server";
 
-export default function DonatePage() {
+export default async function DonatePage() {
+  const lang = await getLang();
+
   return (
     <StubPage
+      lang={lang}
       title={{ en: "Donate", es: "Donar" }}
       heroImage="/images/client-sent-images/Image-1.jpeg"
       imagePosition="center 25%"

@@ -1,8 +1,12 @@
 import { StubPage } from "@/components/layout/StubPage";
+import { getLang } from "@/lib/i18n-server";
 
-export default function VideosPage() {
+export default async function VideosPage() {
+  const lang = await getLang();
+
   return (
     <StubPage
+      lang={lang}
       title={{ en: "Videos", es: "Videos" }}
       heroImage="/images/client-sent-images/E705060C-6839-457C-91D0-76C6A08AAEA4.jpeg"
       imagePosition="center"

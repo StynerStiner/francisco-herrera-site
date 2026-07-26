@@ -48,26 +48,30 @@ export function Gallery({ content, lang = "en" }: Props) {
           </p>
         </div>
 
-        {/* Portrait overlay (lg+) — magazine-inset on the right with a
-            gentle tilt + gold border + heavy drop-shadow. Reverts to flat
-            on hover for a subtle "lift" interaction. */}
-        <div className="hidden lg:block absolute right-12 xl:right-24 top-1/2 -translate-y-1/2 z-20">
-          <figure className="group relative border-2 border-[var(--color-accent-brand)]/55 bg-black p-2 [filter:drop-shadow(0_30px_40px_rgba(0,0,0,0.7))_drop-shadow(0_8px_16px_rgba(0,0,0,0.5))] -rotate-2 hover:rotate-0 transition-transform duration-[700ms] ease-out">
+        {/* Portrait inset (lg+) — small magazine-style cutout pinned to the
+            TOP-RIGHT corner. The 24/10 crop of the studio photo puts the
+            musicians in the lower band, so the ceiling above them is the
+            one area an inset can sit without covering anybody. Kept
+            deliberately small for the same reason. Tilt reverts to flat on
+            hover for a subtle "lift". */}
+        <div className="hidden lg:block absolute right-6 xl:right-10 top-6 xl:top-8 z-20">
+          <figure className="group relative border-2 border-[var(--color-accent-brand)]/55 bg-black p-1.5 [filter:drop-shadow(0_18px_26px_rgba(0,0,0,0.7))_drop-shadow(0_6px_12px_rgba(0,0,0,0.5))] -rotate-2 hover:rotate-0 transition-transform duration-[700ms] ease-out">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={content.portraitImage}
               alt={t(content.portraitImageAlt, lang)}
-              className="block w-[18rem] xl:w-[22rem] aspect-[3/4] object-cover"
+              className="block w-32 xl:w-40 aspect-[3/4] object-cover"
               loading="lazy"
             />
           </figure>
         </div>
       </div>
 
-      {/* Portrait beneath the banner (below lg) — pulled up so it overlaps
-          the bottom edge of the banner like a magazine inset. */}
-      <div className="lg:hidden -mt-20 sm:-mt-28 mx-auto max-w-xs sm:max-w-sm px-6 relative z-10">
-        <figure className="border-2 border-[var(--color-accent-brand)]/55 bg-black p-2 [filter:drop-shadow(0_20px_30px_rgba(0,0,0,0.6))]">
+      {/* Below lg the inset can't sit inside the square crop without
+          covering the band, so it rides under the banner instead — pulled
+          up so it still overlaps the bottom edge like a magazine inset. */}
+      <div className="lg:hidden -mt-16 sm:-mt-20 mx-auto max-w-[11rem] sm:max-w-[13rem] px-6 relative z-10">
+        <figure className="border-2 border-[var(--color-accent-brand)]/55 bg-black p-1.5 [filter:drop-shadow(0_20px_30px_rgba(0,0,0,0.6))]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={content.portraitImage}
@@ -78,9 +82,8 @@ export function Gallery({ content, lang = "en" }: Props) {
         </figure>
       </div>
 
-      {/* Spacer below mobile portrait so the next section doesn't crash
-          into it. Hidden at lg+ where the portrait sits inside the banner. */}
-      <div aria-hidden="true" className="lg:hidden h-16 sm:h-20" />
+      {/* Spacer so the next section doesn't crash into the mobile inset. */}
+      <div aria-hidden="true" className="lg:hidden h-12 sm:h-14" />
     </section>
   );
 }

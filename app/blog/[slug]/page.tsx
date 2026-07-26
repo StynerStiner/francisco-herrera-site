@@ -5,10 +5,9 @@ import { ArrowLeft, ArrowRight, ExternalLink, Headphones, MessageCircle } from "
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { blogPosts, getPostBySlug } from "@/lib/content/blog";
-import { t, type Lang } from "@/lib/i18n";
+import { t } from "@/lib/i18n";
+import { getLang } from "@/lib/i18n-server";
 import type { BlogPost } from "@/lib/content/blog";
-
-const lang: Lang = "en";
 
 // Default featured image used when a post has no `image` field. Falls back
 // to the rally photo so every article opens with a visual.
@@ -45,6 +44,8 @@ function readTimeMinutes(post: { body: { en: string; es: string }[] }): number {
 }
 
 export default async function BlogPostPage({ params }: { params: Params }) {
+  const lang = await getLang();
+
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();

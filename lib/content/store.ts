@@ -85,8 +85,8 @@ export const storeContent: StoreContent = {
 
   featured: {
     eyebrow: {
-      en: "FEATURED RELEASES / LANZAMIENTOS DESTACADOS",
-      es: "LANZAMIENTOS DESTACADOS / FEATURED RELEASES",
+      en: "FEATURED RELEASES",
+      es: "LANZAMIENTOS DESTACADOS",
     },
     title: { en: "Three Albums to Start With", es: "Tres Álbumes para Empezar" },
     releases: [
@@ -124,7 +124,7 @@ export const storeContent: StoreContent = {
           { label: { en: "Bonus", es: "Extra" }, value: { en: "Saber ante la Migra", es: "Saber ante la Migra" } },
           { label: { en: "Tracks", es: "Pistas" }, value: { en: "12", es: "12" } },
         ],
-        cta: { label: { en: "VIEW ALBUM & TRACKLIST / VER ÁLBUM", es: "VER ÁLBUM Y CANCIONES" }, href: "/store/honor-migrante" },
+        cta: { label: { en: "VIEW ALBUM & TRACKLIST", es: "VER ÁLBUM Y CANCIONES" }, href: "/store/honor-migrante" },
         pricing: { model: "fixed", download: { amount: 10, currency: "USD" } },
         featuredTrackIndex: 1,
         tracks: [
@@ -179,7 +179,7 @@ export const storeContent: StoreContent = {
           { label: { en: "Tracks", es: "Pistas" }, value: { en: "16", es: "16" } },
           { label: { en: "Price", es: "Precio" }, value: { en: "$15 CD · $5 download", es: "$15 CD · $5 descarga" } },
         ],
-        cta: { label: { en: "VIEW ALBUM & TRACKLIST / VER ÁLBUM", es: "VER ÁLBUM Y CANCIONES" }, href: "/store/fuerza-de-la-raiz" },
+        cta: { label: { en: "VIEW ALBUM & TRACKLIST", es: "VER ÁLBUM Y CANCIONES" }, href: "/store/fuerza-de-la-raiz" },
         pricing: {
           model: "fixed",
           physical: { amount: 15, currency: "USD" },
@@ -206,16 +206,16 @@ export const storeContent: StoreContent = {
         ],
       },
       {
-        id: "francisco-y-las-ninas",
-        slug: "francisco-y-las-ninas",
+        id: "francisco-y-los-ninos",
+        slug: "francisco-y-los-ninos",
         image: "/images/albums/Francisco-y-L@s-NIñ@s.png",
         imageAlt: {
-          en: "Francisco y L@s Niñ@s album cover",
-          es: "Portada del álbum Francisco y L@s Niñ@s",
+          en: "Francisco y Los Niños album cover",
+          es: "Portada del álbum Francisco y Los Niños",
         },
         title: {
-          en: "Francisco y Las Niñas",
-          es: "Francisco y Las Niñas",
+          en: "Francisco y Los Niños",
+          es: "Francisco y Los Niños",
         },
         artist: { en: "Francisco J. Herrera", es: "Francisco J. Herrera" },
         meta: {
@@ -242,7 +242,7 @@ export const storeContent: StoreContent = {
           { label: { en: "Use", es: "Uso" }, value: { en: "Home + classroom", es: "Casa + aula" } },
           { label: { en: "Pricing", es: "Precio" }, value: { en: "Pay your price", es: "Tú pones el precio" } },
         ],
-        cta: { label: { en: "VIEW ALBUM & TRACKLIST / VER ÁLBUM", es: "VER ÁLBUM Y CANCIONES" }, href: "/store/francisco-y-las-ninas" },
+        cta: { label: { en: "VIEW ALBUM & TRACKLIST", es: "VER ÁLBUM Y CANCIONES" }, href: "/store/francisco-y-los-ninos" },
         pricing: { model: "your-price" },
         featuredTrackIndex: 1,
         tracks: [
@@ -421,7 +421,7 @@ export const storeContent: StoreContent = {
   },
 
   catalog: {
-    eyebrow: { en: "FULL CATALOG / CATÁLOGO COMPLETO", es: "CATÁLOGO COMPLETO / FULL CATALOG" },
+    eyebrow: { en: "FULL CATALOG", es: "CATÁLOGO COMPLETO" },
     title: { en: "All Albums & Downloads", es: "Todos los Álbumes y Descargas" },
     addToCart: { en: "Add to cart", es: "Agregar al carrito" },
     outOfStock: { en: "Out of stock", es: "Agotado" },

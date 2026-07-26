@@ -4,9 +4,7 @@ import { Calendar, GraduationCap, Flame, Mail } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BookingForm } from "@/components/sections/BookingForm";
-import type { Lang } from "@/lib/i18n";
-
-const lang: Lang = "en";
+import { getLang } from "@/lib/i18n-server";
 
 // Three event-type doors. Each is a real path forward — the visitor
 // picks the type that fits their gathering, and the CTA opens an email
@@ -79,7 +77,9 @@ const INQUIRY_CHECKLIST: { en: string; es: string }[] = [
   },
 ];
 
-export default function BookingPage() {
+export default async function BookingPage() {
+  const lang = await getLang();
+
   return (
     <>
       <Header lang={lang} />
@@ -90,7 +90,11 @@ export default function BookingPage() {
             full overlays and the "En Vivo" cursive watermark. */}
         <section
           className="relative isolate overflow-hidden pt-24 sm:pt-32 lg:pt-44 pb-14 sm:pb-20 lg:pb-28 min-h-[44vh] sm:min-h-[55vh] lg:min-h-[60vh] flex items-end"
-          aria-label="Contact and book Francisco J. Herrera"
+          aria-label={
+            lang === "en"
+              ? "Contact and book Francisco J. Herrera"
+              : "Contacta y contrata a Francisco J. Herrera"
+          }
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -126,19 +130,19 @@ export default function BookingPage() {
 
           <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-6 text-center w-full">
             <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
-              CONTACT &amp; BOOK / CONTACTO Y CONTRATAR
+              {lang === "en" ? "CONTACT & BOOK" : "CONTACTO Y CONTRATACIÓN"}
             </span>
             <h1 className="font-heading font-black text-5xl sm:text-6xl lg:text-8xl text-[var(--color-fg)] mb-5 uppercase tracking-tight leading-[0.95] [text-shadow:0_2px_24px_rgba(0,0,0,0.55)]">
-              Bring Francisco
+              {lang === "en" ? "Bring Francisco" : "Lleva a Francisco"}
               <br />
               <span className="italic font-light text-[var(--color-accent-brand)]">
-                to your stage.
+                {lang === "en" ? "to your stage." : "a tu escenario."}
               </span>
             </h1>
             <p className="text-white/90 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-              Reach out about a show, a school visit, a vigil, a song, or
-              simply to say hello — music for movements, churches, schools,
-              festivals, and family events.
+              {lang === "en"
+                ? "Reach out about a show, a school visit, a vigil, a song, or simply to say hello — music for movements, churches, schools, festivals, and family events."
+                : "Escríbenos sobre un concierto, una visita escolar, una vigilia, una canción, o simplemente para saludar — música para movimientos, iglesias, escuelas, festivales y eventos familiares."}
             </p>
           </div>
         </section>
@@ -153,8 +157,8 @@ export default function BookingPage() {
             <div className="text-center mb-14 max-w-3xl mx-auto">
               <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
                 {lang === "en"
-                  ? "WHAT KIND OF EVENT / QUÉ TIPO DE EVENTO"
-                  : "QUÉ TIPO DE EVENTO / WHAT KIND OF EVENT"}
+                  ? "WHAT KIND OF EVENT"
+                  : "QUÉ TIPO DE EVENTO"}
               </span>
               <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] mb-5 uppercase tracking-tight leading-[0.95]">
                 {lang === "en" ? "Three kinds" : "Tres tipos"}
@@ -261,8 +265,8 @@ export default function BookingPage() {
             <div className="text-center mb-12">
               <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4 inline-block">
                 {lang === "en"
-                  ? "WHAT TO INCLUDE / QUÉ INCLUIR"
-                  : "QUÉ INCLUIR / WHAT TO INCLUDE"}
+                  ? "WHAT TO INCLUDE"
+                  : "QUÉ INCLUIR"}
               </span>
               <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] mb-4 uppercase tracking-tight leading-[0.95]">
                 {lang === "en" ? "Five lines," : "Cinco líneas,"}
@@ -317,7 +321,7 @@ export default function BookingPage() {
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#1f1b10]/85" />
           <div className="relative mx-auto max-w-3xl px-6 text-center">
             <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4 inline-block">
-              {lang === "en" ? "DIRECT / DIRECTO" : "DIRECTO / DIRECT"}
+              {lang === "en" ? "DIRECT" : "DIRECTO"}
             </span>
             <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] mb-8 uppercase tracking-tight leading-[0.95]">
               {lang === "en" ? "Or write" : "O escriban"}

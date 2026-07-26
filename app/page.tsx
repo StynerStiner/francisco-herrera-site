@@ -25,11 +25,11 @@ import { Donate } from "@/components/sections/Donate";
 import { FeaturedBlog } from "@/components/sections/FeaturedBlog";
 import { guitareHome } from "@/lib/content/home";
 import { homepageHighlights, pastEvents } from "@/lib/content/shows";
-import type { Lang } from "@/lib/i18n";
+import { getLang } from "@/lib/i18n-server";
 
-const lang: Lang = "en";
+export default async function HomePage() {
+  const lang = await getLang();
 
-export default function HomePage() {
   return (
     <>
       <Header lang={lang} />

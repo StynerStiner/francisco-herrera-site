@@ -5,9 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { EventsArchive } from "@/components/sections/EventsArchive";
 import { EpkGallery, type GalleryCellData } from "@/components/sections/EpkGallery";
 import { pastEvents, EVENTS_PER_PAGE } from "@/lib/content/shows";
-import type { Lang } from "@/lib/i18n";
-
-const lang: Lang = "en";
+import { getLang } from "@/lib/i18n-server";
 
 // Career-spanning stats anchor — sourced from the /about page highlights
 // so the numbers stay consistent across the site. The "events archived"
@@ -181,6 +179,8 @@ type PageProps = {
 };
 
 export default async function ShowsPage({ searchParams }: PageProps) {
+  const lang = await getLang();
+
   const params = await searchParams;
   const totalPages = Math.max(1, Math.ceil(pastEvents.length / EVENTS_PER_PAGE));
   const requested = Number(params.page) || 1;

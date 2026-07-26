@@ -32,7 +32,7 @@ const INITIAL_STATE: FormState = {
 
 const COPY = {
   en: {
-    eyebrow: "SEND A MESSAGE / ENVIAR UN MENSAJE",
+    eyebrow: "SEND A MESSAGE",
     title: "Booking inquiry",
     intro:
       "Fill in what you can — Francisco reads every message and will respond within a few days.",
@@ -69,7 +69,7 @@ const COPY = {
     fallbackEmail: "info@franciscoherrera.com",
   },
   es: {
-    eyebrow: "ENVIAR UN MENSAJE / SEND A MESSAGE",
+    eyebrow: "ENVIAR UN MENSAJE",
     title: "Consulta de contratación",
     intro:
       "Completen lo que puedan — Francisco lee todos los mensajes y responderá en unos días.",

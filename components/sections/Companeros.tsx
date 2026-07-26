@@ -9,6 +9,39 @@ type Props = {
   lang?: Lang;
 };
 
+/**
+ * Renders a bio with the first occurrence of `label` turned into an
+ * outbound link. Falls back to plain text when the label isn't present,
+ * so a translation that phrases the name differently can't break the copy.
+ */
+function BioWithLink({
+  bio,
+  label,
+  href,
+}: {
+  bio: string;
+  label: string;
+  href: string;
+}) {
+  const at = bio.indexOf(label);
+  if (at === -1) return <>{bio}</>;
+
+  return (
+    <>
+      {bio.slice(0, at)}
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-[var(--color-accent-brand)] underline underline-offset-2 hover:text-[var(--color-fg)] transition-colors"
+      >
+        {label}
+      </a>
+      {bio.slice(at + label.length)}
+    </>
+  );
+}
+
 export function Companeros({ content, lang = "en" }: Props) {
   return (
     <section
@@ -64,8 +97,16 @@ export function Companeros({ content, lang = "en" }: Props) {
                 <h3 className="font-heading text-xl text-[var(--color-fg)] group-hover:text-[var(--color-accent-brand)] transition-colors mb-3">
                   {t(m.name, lang)}
                 </h3>
-                <p className="text-[var(--color-muted-brand)] text-sm leading-relaxed line-clamp-3">
-                  {t(m.bio, lang)}
+                <p className="text-[var(--color-muted-brand)] text-sm leading-relaxed">
+                  {m.bioLink ? (
+                    <BioWithLink
+                      bio={t(m.bio, lang)}
+                      label={t(m.bioLink.label, lang)}
+                      href={m.bioLink.href}
+                    />
+                  ) : (
+                    t(m.bio, lang)
+                  )}
                 </p>
                 <NextLink
                   href={m.cta.href}

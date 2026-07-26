@@ -7,9 +7,13 @@ import {
   EpkGallery,
   type GalleryCellData,
 } from "@/components/sections/EpkGallery";
-import type { Lang } from "@/lib/i18n";
-
-const lang: Lang = "en";
+import { t } from "@/lib/i18n";
+import { getLang } from "@/lib/i18n-server";
+import {
+  aboutCopy,
+  aboutHighlights,
+  aboutCollaborators,
+} from "@/lib/content/about";
 
 // Track listing for the featured "Amor Sin Papeles" listen section.
 // Per-track pricing mirrors the original franciscoherreramusic.com store.
@@ -36,19 +40,10 @@ const amorSinPapelesTracks: { n: number; title: string; duration: string; price:
 const albums: { id: string; title: string; image: string }[] = [
   { id: "honor-migrante", title: "Honor Migrante", image: "/images/albums/Honor-Migrante.png" },
   { id: "fuerza-de-la-raiz", title: "Fuerza de la Raíz", image: "/images/albums/Fuerza-de-la-Raíz.png" },
-  { id: "francisco-y-las-ninas", title: "Francisco y L@s Niñ@s", image: "/images/albums/Francisco-y-L@s-NIñ@s.png" },
+  { id: "francisco-y-los-ninos", title: "Francisco y Los Niños", image: "/images/albums/Francisco-y-L@s-NIñ@s.png" },
   { id: "canta-y-juega", title: "Canta y Juega", image: "/images/albums/Canta-y-Juega.png" },
   { id: "nuestros-ninos", title: "Nuestros Niños Son Sagrado", image: "/images/albums/Nuestros-Niños-Son-Sagrado.png" },
   { id: "posada-sin-fronteras", title: "Posada Sin Fronteras", image: "/images/albums/Posada-Sin-Fronteras.png" },
-];
-
-const highlights: string[] = [
-  "Performed alongside Pete Seeger, Jon Fromer, and Emma's Revolution",
-  "Stage at the Battle for Seattle (1999) — 250,000 people shutting down the WTO",
-  "School of the Americas Watch vigils — up to 22,000 people",
-  "Shared the stage with Joan Baez and Jesse Jackson before 10,000 people (1987) for Brian S. Willson",
-  "Toured North and Central America in solidarity with grassroots movements",
-  "Scored documentaries for filmmakers Saul Landau and Haskell Wexler",
 ];
 
 // "Compañeros" gallery — the people the songs are sung with and for.
@@ -114,16 +109,9 @@ const COMPANIONS: GalleryCellData[] = [
   },
 ];
 
-const collaborators: { name: string; role: string }[] = [
-  { name: "Camilo Landau", role: "Guitar" },
-  { name: "Ayla Davila", role: "Bass" },
-  { name: "Chris Trinidad", role: "Bass and keyboards" },
-  { name: "Rafael Herrera", role: "Percussion" },
-  { name: "Pedro Gomez", role: "Drums" },
-  { name: "Greg Landau", role: "Producer (Grammy-nominated)" },
-];
+export default async function AboutPage() {
+  const lang = await getLang();
 
-export default function AboutPage() {
   return (
     <>
       <Header lang={lang} />
@@ -133,7 +121,7 @@ export default function AboutPage() {
             decades of history before the bio kicks in. */}
         <section
           className="relative isolate overflow-hidden pt-24 sm:pt-32 lg:pt-44 pb-14 sm:pb-20 lg:pb-28 min-h-[44vh] sm:min-h-[55vh] lg:min-h-[60vh] flex items-end"
-          aria-label="About Francisco Herrera"
+          aria-label={t(aboutCopy.heroAria, lang)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -169,7 +157,7 @@ export default function AboutPage() {
 
           <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-6 text-center w-full">
             <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
-              About / Acerca
+              {t(aboutCopy.heroEyebrow, lang)}
             </span>
             <h1 className="font-heading font-black text-5xl sm:text-6xl lg:text-8xl text-[var(--color-fg)] mb-5 uppercase tracking-tight leading-[0.95] [text-shadow:0_2px_24px_rgba(0,0,0,0.55)]">
               Francisco
@@ -179,9 +167,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-white/90 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-              Theologian. Cultural worker. Singer-songwriter. Four decades of
-              carrying songs across borders — between English and Spanish,
-              churches and union halls, elders and children.
+              {t(aboutCopy.heroLead, lang)}
             </p>
           </div>
         </section>
@@ -201,7 +187,7 @@ export default function AboutPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/Solo-Portraits/1.Solo-Portraits-Vertical.png"
-                    alt="Francisco J. Herrera with classical guitar"
+                    alt={t(aboutCopy.portraitAlt, lang)}
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
@@ -215,36 +201,15 @@ export default function AboutPage() {
               <div>
                 <p className="font-body text-lg lg:text-xl leading-[1.8] text-white mb-7">
                   <span className="font-heading font-black text-6xl lg:text-7xl text-gold-3d float-left mr-3 mt-1 leading-[0.85]">
-                    F
+                    {t(aboutCopy.bio1, lang).charAt(0)}
                   </span>
-                  rancisco Herrera is a boundary-crossing artist whose music
-                  blends cultural pride with a call for justice. Born into a
-                  family where performance was a way of life, Francisco began
-                  his musical journey as a child, singing Mexican rancheras and
-                  romantic ballads alongside his siblings at community and
-                  political events. By his teenage years, his talent and
-                  curiosity led him to explore rhythm and blues, jazz, rock,
-                  punk rock, pop, and gospel — creating an eclectic style that
-                  knows no borders.
+                  {t(aboutCopy.bio1, lang).slice(1)}
                 </p>
                 <p className="font-body text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/90 mb-7">
-                  Inspired by the legacy of Archbishop Óscar Romero and the
-                  rise of Base Christian Communities, Francisco&apos;s music
-                  found its true direction — championing human rights and
-                  amplifying the voices of working people. His creativity is
-                  fueled by the joy of music, the energy of collaborating with
-                  other artists, and the deep connection he forms with
-                  audiences. He especially cherishes live performances in
-                  community centers, on the streets, in churches, and union
-                  halls, where his music becomes a tool for empowerment and
-                  solidarity.
+                  {t(aboutCopy.bio2, lang)}
                 </p>
                 <p className="font-body text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/90">
-                  What sets Francisco apart is his ability to turn his songs
-                  into human stories, blending great musicality with first-class
-                  storytelling. Audiences laugh, cry, reminisce, and envision a
-                  better future — all within a transformative and enjoyable
-                  musical experience.
+                  {t(aboutCopy.bio3, lang)}
                 </p>
               </div>
             </div>
@@ -279,57 +244,41 @@ export default function AboutPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/Solo-Portraits/2.Solo-Portraits-Vertical.png"
-                    alt="Francisco J. Herrera in performance"
+                    alt={t(aboutCopy.performanceAlt, lang)}
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
                 <figcaption className="mt-3 text-xs font-ui uppercase tracking-[0.2em] text-[var(--color-muted-brand)] text-center">
-                  In performance
+                  {t(aboutCopy.performanceCaption, lang)}
                 </figcaption>
               </figure>
 
               {/* Narrative + pull-quote */}
               <div>
                 <span className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4 inline-block">
-                  Calexico / Formative Years
+                  {t(aboutCopy.calexicoEyebrow, lang)}
                 </span>
                 <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] mb-8 uppercase tracking-tight leading-[0.95]">
-                  Two worlds
+                  {t(aboutCopy.calexicoTitle, lang)}
                   <br />
                   <span className="italic font-light text-[var(--color-accent-brand)]">
-                    at once.
+                    {t(aboutCopy.calexicoTitleAccent, lang)}
                   </span>
                 </h2>
                 <p className="font-body text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/90 mb-7">
-                  Growing up in the border town of Calexico, Francisco always
-                  straddles two worlds. &ldquo;My siblings and cousins and I
-                  used to sing rancheras and some mariachi at family parties,
-                  and when we got a little older we started some garage rock
-                  bands,&rdquo; he recalls of his early musical exploits.
+                  {t(aboutCopy.calexico1, lang)}
                 </p>
                 <p className="font-body text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/90 mb-7">
-                  As he became more involved in the church and Latin American
-                  social movements, Herrera began exploring ways to use music
-                  to further his goals of social justice. He traveled
-                  extensively throughout Latin America working with community
-                  organizations even as he finished his four years at seminary
-                  school — toting his guitar, ready to support events, actions,
-                  and church meetings.
+                  {t(aboutCopy.calexico2, lang)}
                 </p>
                 <blockquote className="border-l-2 border-[var(--color-accent-brand)] pl-6 mb-7">
                   <p className="font-body italic text-lg lg:text-xl leading-[1.6] text-white">
-                    &ldquo;Reflection, meditation, prayer — all those things are
-                    important. But they&apos;re important so you can play a
-                    role here to make social change. <em>De ahí nacen</em> all
-                    those misas that have a social message.&rdquo;
+                    {t(aboutCopy.calexicoQuote, lang)}
                   </p>
                 </blockquote>
                 <p className="font-body text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/90">
-                  He deftly weaves between English and Spanish as he explains
-                  the philosophy of Liberation Theology, sitting under portraits
-                  of his two heroes — Che Guevara, and Monseñor Óscar Romero,
-                  the Salvadoran archbishop assassinated in 1980.
+                  {t(aboutCopy.calexico3, lang)}
                 </p>
               </div>
             </div>
@@ -345,13 +294,13 @@ export default function AboutPage() {
           <div className="mx-auto max-w-[var(--container-content)] px-6">
             <div className="text-center mb-14 max-w-3xl mx-auto">
               <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
-                Portraits / Retratos
+                {t(aboutCopy.portraitsEyebrow, lang)}
               </span>
               <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
-                On
+                {t(aboutCopy.portraitsTitle, lang)}
                 <br />
                 <span className="italic font-light text-[var(--color-accent-brand)]">
-                  stage.
+                  {t(aboutCopy.portraitsTitleAccent, lang)}
                 </span>
               </h2>
             </div>
@@ -364,7 +313,7 @@ export default function AboutPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/images/Solo-Portraits/${n}.Solo-Portraits-Vertical.png`}
-                    alt={`Francisco J. Herrera — portrait ${n}`}
+                    alt={`${t(aboutCopy.portraitNAlt, lang)} ${n}`}
                     className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
                     loading="lazy"
                   />
@@ -417,13 +366,13 @@ export default function AboutPage() {
           <div className="relative mx-auto max-w-[var(--container-content)] px-6">
             <div className="text-center mb-14 max-w-3xl mx-auto">
               <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
-                Discography / Discografía
+                {t(aboutCopy.discographyEyebrow, lang)}
               </span>
               <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
-                Seven
+                {t(aboutCopy.discographyTitle, lang)}
                 <br />
                 <span className="italic font-light text-[var(--color-accent-brand)]">
-                  albums.
+                  {t(aboutCopy.discographyTitleAccent, lang)}
                 </span>
               </h2>
             </div>
@@ -446,7 +395,7 @@ export default function AboutPage() {
               ))}
             </ul>
             <p className="text-center mt-10 text-sm font-body italic text-[var(--color-fg)]/85 [text-shadow:0_1px_8px_rgba(0,0,0,0.55)]">
-              Including two children&apos;s albums in Spanish.
+              {t(aboutCopy.discographyNote, lang)}
             </p>
           </div>
         </section>
@@ -472,13 +421,13 @@ export default function AboutPage() {
           <div className="relative mx-auto max-w-[var(--container-content)] px-6">
             <div className="text-center mb-14 max-w-3xl mx-auto">
               <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
-                Music / Música
+                {t(aboutCopy.musicEyebrow, lang)}
               </span>
               <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
-                Amor sin
+                {t(aboutCopy.musicTitle, lang)}
                 <br />
                 <span className="italic font-light text-[var(--color-accent-brand)]">
-                  papeles.
+                  {t(aboutCopy.musicTitleAccent, lang)}
                 </span>
               </h2>
             </div>
@@ -491,7 +440,7 @@ export default function AboutPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/albums/Honor-Migrante.png"
-                    alt="Amor Sin Papeles — Francisco J. Herrera"
+                    alt={t(aboutCopy.albumCoverAlt, lang)}
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
@@ -511,7 +460,7 @@ export default function AboutPage() {
                       href="https://franciscoherreramusic.com/blog/blog/4229141/amor-sin-papeles--2"
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="Play Amor Sin Papeles on the original site"
+                      aria-label={t(aboutCopy.playAria, lang)}
                       className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-accent-brand)] text-[var(--color-bg)] hover:bg-[var(--color-fg)] transition-colors shrink-0"
                     >
                       <Play className="size-4 translate-x-[1px]" aria-hidden="true" fill="currentColor" />
@@ -549,14 +498,14 @@ export default function AboutPage() {
                         href="https://franciscoherreramusic.com/blog/blog/4229141/amor-sin-papeles--2"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`Info about ${track.title}`}
+                        aria-label={`${t(aboutCopy.trackInfoAria, lang)} ${track.title}`}
                         className="inline-flex items-center gap-1 text-xs font-ui uppercase tracking-[0.15em] text-[var(--color-muted-brand)] hover:text-[var(--color-accent-brand)] transition-colors shrink-0"
                       >
                         <Info className="size-3.5" aria-hidden="true" />
-                        <span className="hidden sm:inline">Info</span>
+                        <span className="hidden sm:inline">{t(aboutCopy.info, lang)}</span>
                       </a>
                       <span className="font-ui font-semibold text-xs uppercase tracking-[0.15em] text-[var(--color-accent-brand)] shrink-0">
-                        Sale {track.price}
+                        {t(aboutCopy.sale, lang)} {track.price}
                       </span>
                     </li>
                   ))}
@@ -570,13 +519,13 @@ export default function AboutPage() {
                     className="inline-flex items-center gap-2 font-ui font-semibold text-xs uppercase tracking-[0.2em] bg-[var(--color-accent-brand)] text-[var(--color-bg)] hover:bg-[var(--color-fg)] transition-colors px-6 py-3"
                   >
                     <Headphones className="size-4" aria-hidden="true" />
-                    Listen / Escuchar
+                    {t(aboutCopy.listenCta, lang)}
                   </a>
                   <NextLink
                     href="/store"
                     className="inline-flex items-center gap-2 font-ui font-semibold text-xs uppercase tracking-[0.2em] border border-[var(--color-accent-brand)]/60 text-white hover:bg-[var(--color-accent-brand)] hover:text-[var(--color-bg)] hover:border-[var(--color-accent-brand)] transition-colors px-6 py-3"
                   >
-                    Buy in store / Comprar
+                    {t(aboutCopy.buyCta, lang)}
                   </NextLink>
                 </div>
               </div>
@@ -592,7 +541,7 @@ export default function AboutPage() {
             YouTube source: https://youtu.be/Z2OyTMY9Nbo */}
         <section
           className="relative w-full h-[420px] sm:h-[560px] lg:h-[700px] overflow-hidden bg-black"
-          aria-label="Watch Francisco perform"
+          aria-label={t(aboutCopy.watchAria, lang)}
         >
           {/* YouTube iframe sized 177.78vh × 100vh to maintain 16:9
               while always covering the section (the YouTube version of
@@ -632,17 +581,17 @@ export default function AboutPage() {
           {/* Centered content — eyebrow + signature title + Watch CTA. */}
           <div className="relative h-full mx-auto max-w-[var(--container-content)] px-6 flex flex-col items-center justify-center text-center z-20">
             <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4">
-              Watch / Ver
+              {t(aboutCopy.watchEyebrow, lang)}
             </span>
             <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-7xl text-[var(--color-fg)] mb-5 uppercase tracking-tight leading-[0.95] [text-shadow:0_2px_24px_rgba(0,0,0,0.55)]">
-              Francisco
+              {t(aboutCopy.watch1Title, lang)}
               <br />
               <span className="italic font-light text-[var(--color-accent-brand)]">
-                in performance.
+                {t(aboutCopy.watch1TitleAccent, lang)}
               </span>
             </h2>
             <p className="text-[var(--color-fg)]/85 text-base lg:text-lg mb-10 max-w-2xl leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-              A few minutes on stage — the songs, the storytelling, the room.
+              {t(aboutCopy.watch1Lead, lang)}
             </p>
             <a
               href="https://youtu.be/Z2OyTMY9Nbo"
@@ -650,7 +599,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-ui font-semibold text-xs uppercase tracking-[0.2em] bg-[var(--color-accent-brand)] text-[var(--color-bg)] hover:bg-[var(--color-fg)] transition-colors px-7 py-3"
             >
-              Watch on YouTube / Ver en YouTube
+              {t(aboutCopy.watchCta, lang)}
             </a>
           </div>
         </section>
@@ -661,7 +610,7 @@ export default function AboutPage() {
             YouTube source: https://youtu.be/6ROLjpXB9gs */}
         <section
           className="relative w-full h-[420px] sm:h-[560px] lg:h-[700px] overflow-hidden bg-black"
-          aria-label="Watch Francisco perform — second video"
+          aria-label={t(aboutCopy.watchAria2, lang)}
         >
           <div className="absolute inset-0 pointer-events-none">
             <iframe
@@ -693,17 +642,17 @@ export default function AboutPage() {
 
           <div className="relative h-full mx-auto max-w-[var(--container-content)] px-6 flex flex-col items-center justify-center text-center z-20">
             <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4">
-              Watch / Ver
+              {t(aboutCopy.watchEyebrow, lang)}
             </span>
             <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-7xl text-[var(--color-fg)] mb-5 uppercase tracking-tight leading-[0.95] [text-shadow:0_2px_24px_rgba(0,0,0,0.55)]">
-              Another song,
+              {t(aboutCopy.watch2Title, lang)}
               <br />
               <span className="italic font-light text-[var(--color-accent-brand)]">
-                another stage.
+                {t(aboutCopy.watch2TitleAccent, lang)}
               </span>
             </h2>
             <p className="text-[var(--color-fg)]/85 text-base lg:text-lg mb-10 max-w-2xl leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-              More from the road — different room, same heart.
+              {t(aboutCopy.watch2Lead, lang)}
             </p>
             <a
               href="https://youtu.be/6ROLjpXB9gs"
@@ -711,7 +660,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-ui font-semibold text-xs uppercase tracking-[0.2em] bg-[var(--color-accent-brand)] text-[var(--color-bg)] hover:bg-[var(--color-fg)] transition-colors px-7 py-3"
             >
-              Watch on YouTube / Ver en YouTube
+              {t(aboutCopy.watchCta, lang)}
             </a>
           </div>
         </section>
@@ -730,47 +679,42 @@ export default function AboutPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/Solo-Portraits/3.Solo-Portraits-Vertical.png"
-                    alt="Francisco J. Herrera on stage"
+                    alt={t(aboutCopy.onStageAlt, lang)}
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
                 <figcaption className="mt-3 text-xs font-ui uppercase tracking-[0.2em] text-[var(--color-muted-brand)] text-center">
-                  On stage
+                  {t(aboutCopy.onStageCaption, lang)}
                 </figcaption>
               </figure>
 
               {/* Highlights list */}
               <div>
                 <span className="font-ui font-semibold text-xs uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-4 inline-block">
-                  On Stage / En Escena
+                  {t(aboutCopy.highlightsEyebrow, lang)}
                 </span>
                 <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] mb-10 uppercase tracking-tight leading-[0.95]">
-                  Notable
+                  {t(aboutCopy.highlightsTitle, lang)}
                   <br />
                   <span className="italic font-light text-[var(--color-accent-brand)]">
-                    moments.
+                    {t(aboutCopy.highlightsTitleAccent, lang)}
                   </span>
                 </h2>
                 <ul className="space-y-5">
-                  {highlights.map((item, i) => (
+                  {aboutHighlights.map((item, i) => (
                     <li key={i} className="flex items-start gap-4 border-b border-[var(--color-border-brand)] pb-5">
                       <span className="font-heading text-[var(--color-accent-brand)] text-lg shrink-0">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <p className="font-body text-base lg:text-lg leading-relaxed text-[var(--color-fg)]/90">
-                        {item}
+                        {t(item, lang)}
                       </p>
                     </li>
                   ))}
                 </ul>
                 <p className="font-body text-sm lg:text-base italic leading-relaxed text-[var(--color-fg)]/80 mt-10">
-                  Francisco&apos;s most common place is not on big stages.
-                  He&apos;s found in intimate gatherings of women recovering
-                  from domestic violence, day laborers organizing for a
-                  universal wage, children becoming bilingual, interfaith
-                  groups shutting down private prisons — always performing
-                  songs that move, teach, and inspire.
+                  {t(aboutCopy.highlightsClosing, lang)}
                 </p>
               </div>
             </div>
@@ -787,28 +731,17 @@ export default function AboutPage() {
         <EpkGallery
           lang={lang}
           cells={COMPANIONS}
-          eyebrow={
-            lang === "en"
-              ? "COMPAÑEROS / COMPANIONS"
-              : "COMPAÑEROS / COMPANIONS"
-          }
-          title={lang === "en" ? "On the" : "En el"}
-          titleAccent={lang === "en" ? "road." : "camino."}
+          eyebrow={t(aboutCopy.companionsEyebrow, lang).toUpperCase()}
+          title={t(aboutCopy.companionsTitle, lang)}
+          titleAccent={t(aboutCopy.companionsTitleAccent, lang)}
           backgroundImageSrc="/images/facebook/471278450_10162550647985119_4767484647779335697_n.jpg"
           backgroundImagePosition="center 25%"
-          lead={
-            lang === "en"
-              ? "Bandmates, congregants, organizers — the people the songs are sung with and for."
-              : "Compañeros de banda, congregantes, organizadores — la gente con quien y para quien se cantan las canciones."
-          }
+          lead={t(aboutCopy.companionsLead, lang)}
           overlay={{
-            title: lang === "en" ? "Compañeros" : "Compañeros",
-            subtitle:
-              lang === "en"
-                ? "Forty years on the road."
-                : "Cuarenta años en el camino.",
+            title: "Compañeros",
+            subtitle: t(aboutCopy.companionsOverlaySubtitle, lang),
           }}
-          ariaLabel={lang === "en" ? "Compañeros gallery" : "Galería de compañeros"}
+          ariaLabel={t(aboutCopy.companionsAria, lang)}
         />
 
         {/* ─── Present-day portrait banner ──────────────────────────────
@@ -819,12 +752,12 @@ export default function AboutPage() {
             "Historia" watermark in the hero. */}
         <section
           className="relative w-full overflow-hidden bg-black aspect-[12/5] sm:aspect-[16/6] lg:aspect-[24/10]"
-          aria-label="Francisco J. Herrera today"
+          aria-label={t(aboutCopy.todayAria, lang)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/hero/Francisco-J._Herrera.png"
-            alt="Francisco J. Herrera with his classical guitar in a park"
+            alt={t(aboutCopy.todayAlt, lang)}
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
           />
@@ -879,21 +812,11 @@ export default function AboutPage() {
 
           <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
             <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-white mb-6 inline-block">
-              From Francisco / De Francisco
+              {t(aboutCopy.letterEyebrow, lang)}
             </span>
 
-            <p className="font-signature text-3xl sm:text-4xl lg:text-5xl text-[var(--color-accent-brand)] leading-[1.4] mb-8 [text-shadow:0_2px_18px_rgba(0,0,0,0.45)]">
-              Welcome — these are the songs I sing because they need singing.
-              The songs of liberation, of the migrant journey, of family at
-              the table, of children laughing in two languages. I share them
-              with you.
-            </p>
-
-            <p className="font-body italic text-base lg:text-lg text-[var(--color-fg)]/85 leading-relaxed mb-10">
-              Bienvenidos — estos son los cantos que canto porque necesitan
-              ser cantados. Los cantos de liberación, del camino migrante,
-              de la familia en la mesa, de las niñas y niños riendo en dos
-              idiomas. Se los comparto.
+            <p className="font-signature text-3xl sm:text-4xl lg:text-5xl text-[var(--color-accent-brand)] leading-[1.4] mb-10 [text-shadow:0_2px_18px_rgba(0,0,0,0.45)]">
+              {t(aboutCopy.letter, lang)}
             </p>
 
             <p className="font-signature text-3xl sm:text-4xl text-white leading-none [-webkit-text-stroke:0.4px_currentColor]">
@@ -907,7 +830,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-[var(--container-content)] px-6">
             <div className="text-center mb-14 max-w-3xl mx-auto">
               <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
-                Band & Collaborators
+                {t(aboutCopy.bandEyebrow, lang)}
               </span>
               <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
                 Compañeros
@@ -915,14 +838,14 @@ export default function AboutPage() {
               </h2>
             </div>
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {collaborators.map((c) => (
+              {aboutCollaborators.map((c) => (
                 <li
                   key={c.name}
                   className="border border-[var(--color-border-brand)] hover:border-[var(--color-accent-brand)]/60 transition-colors p-6"
                 >
                   <p className="font-heading text-xl text-white mb-1">{c.name}</p>
                   <p className="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-accent-brand)]">
-                    {c.role}
+                    {t(c.role, lang)}
                   </p>
                 </li>
               ))}
@@ -964,13 +887,13 @@ export default function AboutPage() {
           <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-6">
             <div className="text-center mb-14 max-w-3xl mx-auto">
               <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--color-accent-brand)] mb-3 inline-block">
-                Reviews / Reseñas
+                {t(aboutCopy.reviewsEyebrow, lang)}
               </span>
               <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase tracking-tight leading-[0.95]">
-                In their
+                {t(aboutCopy.reviewsTitle, lang)}
                 <br />
                 <span className="italic font-light text-[var(--color-accent-brand)]">
-                  words.
+                  {t(aboutCopy.reviewsTitleAccent, lang)}
                 </span>
               </h2>
             </div>
@@ -984,13 +907,13 @@ export default function AboutPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/Solo-Portraits/4.Solo-Portraits-Vertical.png"
-                    alt="Francisco J. Herrera in performance"
+                    alt={t(aboutCopy.performanceAlt, lang)}
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
                 <figcaption className="mt-3 text-xs font-ui uppercase tracking-[0.2em] text-[var(--color-muted-brand)] text-center">
-                  Francisco in performance
+                  {t(aboutCopy.reviewPortraitCaption, lang)}
                 </figcaption>
               </figure>
 
@@ -1005,14 +928,7 @@ export default function AboutPage() {
                 />
                 <blockquote>
                   <p className="font-body text-lg lg:text-xl leading-[1.9] text-white/95 italic">
-                    Francisco Herrera is an extraordinary guitarist and singer.
-                    He has performed often at the San Francisco Public
-                    Library&rsquo;s Children&rsquo;s Center over the past
-                    half-dozen years. Francisco is wonderfully capable of
-                    adjusting his repertoire of songs and program length to
-                    different age groups — from the littlest pre-K children
-                    and school-aged kids to teens and adults. I personally
-                    recommend Francisco with great honor!
+                    {t(aboutCopy.review, lang)}
                   </p>
                 </blockquote>
                 <figcaption className="mt-10 pt-6 border-t border-[var(--color-accent-brand)]/30">
@@ -1020,10 +936,10 @@ export default function AboutPage() {
                     Tim Troy
                   </p>
                   <p className="font-ui font-semibold text-xs uppercase tracking-[0.2em] text-white/90 mt-2">
-                    Library &middot; Fisher Children&rsquo;s Center
+                    {t(aboutCopy.reviewRole, lang)}
                   </p>
                   <p className="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-muted-brand)] mt-1">
-                    San Francisco Public Library
+                    {t(aboutCopy.reviewOrg, lang)}
                   </p>
                   <p className="font-body text-xs text-[var(--color-muted-brand)] mt-4 tabular-nums">
                     (415) 557-4549 &nbsp;·&nbsp; Feb.&nbsp;9, 2011
@@ -1043,12 +959,12 @@ export default function AboutPage() {
             del camino migrante — the journey at the heart of the songs. */}
         <section
           className="relative w-full overflow-hidden bg-black aspect-[12/5] sm:aspect-[16/6] lg:aspect-[24/10]"
-          aria-label="Songs of the road — guitar and hat on the sand at sunset"
+          aria-label={t(aboutCopy.roadAria, lang)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/client-sent-images/4.png"
-            alt="A classical guitar and a straw hat resting on the sand at sunset"
+            alt={t(aboutCopy.roadAlt, lang)}
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
           />
@@ -1087,23 +1003,23 @@ export default function AboutPage() {
         <section className="bg-[var(--color-bg)] section-atmospheric py-20 lg:py-28">
           <div className="mx-auto max-w-3xl px-6 text-center">
             <p className="font-signature text-3xl sm:text-4xl lg:text-5xl text-[var(--color-accent-brand)] leading-tight mb-4">
-              &ldquo;An extraordinary guitarist and singer.&rdquo;
+              {t(aboutCopy.pressQuote, lang)}
             </p>
             <p className="font-body italic text-sm text-[var(--color-fg)]/80 mb-10">
-              — Tim Troy, San Francisco Public Library / Fisher Children&apos;s Center
+              {t(aboutCopy.pressAttribution, lang)}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <NextLink
                 href="/booking"
                 className="inline-flex items-center gap-2 font-ui font-semibold text-xs uppercase tracking-[0.2em] bg-[var(--color-accent-brand)] text-[var(--color-bg)] hover:bg-[var(--color-fg)] transition-colors px-7 py-3"
               >
-                Book Francisco / Contrátanos
+                {t(aboutCopy.bookCta, lang)}
               </NextLink>
               <NextLink
                 href="/blog"
                 className="inline-flex items-center gap-2 font-ui font-semibold text-xs uppercase tracking-[0.2em] border border-[var(--color-accent-brand)]/60 text-white hover:bg-[var(--color-accent-brand)] hover:text-[var(--color-bg)] hover:border-[var(--color-accent-brand)] transition-colors px-7 py-3"
               >
-                Read his writing / Leer su escritura
+                {t(aboutCopy.writingCta, lang)}
               </NextLink>
             </div>
           </div>

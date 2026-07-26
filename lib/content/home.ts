@@ -26,7 +26,7 @@ export const homeContent: LegacyHomeContent = {
     title: { en: "Francisco J. Herrera", es: "Francisco J. Herrera" },
     tagline: {
       en: "Songs of liberation, migration, family, and faith — sung in churches, plazas, schools, picket lines, and everywhere people are organizing.",
-      es: "Cantos de liberación, migración, familia y fe — cantados en iglesias, plazas, escuelas, líneas de piquete, y donde la gente se organiza.",
+      es: "Cantos de liberación, migración, familia y fe — cantados en iglesias, plazas, escuelas, huelgas, y donde la gente se organiza.",
     },
     ctaPrimary: { en: "Listen", es: "Escuchar" },
     ctaSecondary: { en: "Book Now", es: "Contrátanos" },
@@ -48,8 +48,8 @@ export const homeContent: LegacyHomeContent = {
       id: "family",
       title: { en: "Children & Family", es: "Niños y Familia" },
       blurb: {
-        en: "Francisco y Las Niñas — songs in Spanish for the whole family.",
-        es: "Francisco y Las Niñas — canciones en español para toda la familia.",
+        en: "Francisco y Los Niños — songs in Spanish for the whole family.",
+        es: "Francisco y Los Niños — canciones en español para toda la familia.",
       },
     },
     {
@@ -233,6 +233,7 @@ export type GalleryContent = {
   watermark: Localized;
   wideImage: string;
   wideImageAlt: Localized;
+  /** Small inset photo tucked into the banner's empty top-right corner. */
   portraitImage: string;
   portraitImageAlt: Localized;
 };
@@ -266,6 +267,10 @@ export type CompaneroCard = {
   name: Localized;
   role: Localized;
   bio: Localized;
+  /** Optional outbound link rendered inside the bio. The first occurrence
+   *  of `label` within the bio text becomes an anchor to `href` — used to
+   *  point a compañer@'s name at their own site. */
+  bioLink?: { label: Localized; href: string };
   cta: { label: Localized; href: string };
 };
 
@@ -406,10 +411,10 @@ export const guitareHome: GuitareHomeContent = {
       eyebrow: { en: "ALBUM", es: "ÁLBUM" },
       title: { en: "HONOR MIGRANTE", es: "HONOR MIGRANTE" },
       tagline: {
-        en: "Songs of the journey home / Cantos del camino a casa",
-        es: "Cantos del camino a casa / Songs of the journey home",
+        en: "Songs of the journey home",
+        es: "Cantos del camino a casa",
       },
-      cta: { label: { en: "LISTEN / ESCUCHAR", es: "ESCUCHAR / LISTEN" }, href: "/music" },
+      cta: { label: { en: "LISTEN", es: "ESCUCHAR" }, href: "/music" },
       decorTitle: { en: "CANTO", es: "CANTO" },
       align: "right-below",
       overlay: false,
@@ -432,7 +437,7 @@ export const guitareHome: GuitareHomeContent = {
         en: "Music for movements, churches, schools, and family",
         es: "Música para movimientos, iglesias, escuelas y familias",
       },
-      cta: { label: { en: "BOOK NOW / CONTRÁTANOS", es: "CONTRÁTANOS / BOOK NOW" }, href: "/booking" },
+      cta: { label: { en: "BOOK NOW", es: "CONTRÁTANOS" }, href: "/booking" },
       decorTitle: { en: "VIVO", es: "VIVO" },
       overlay: false,
       tint: "light",
@@ -447,12 +452,12 @@ export const guitareHome: GuitareHomeContent = {
         es: "Francisco J. Herrera tocando guitarra clásica para niños en una biblioteca escolar",
       },
       eyebrow: { en: "CHILDREN", es: "NIÑOS" },
-      title: { en: "FRANCISCO Y LAS NIÑAS", es: "FRANCISCO Y LAS NIÑAS" },
+      title: { en: "FRANCISCO Y LOS NIÑOS", es: "FRANCISCO Y LOS NIÑOS" },
       tagline: {
         en: "Bilingual songs for kids and families",
         es: "Canciones bilingües para niñas y familias",
       },
-      cta: { label: { en: "EXPLORE / EXPLORAR", es: "EXPLORAR / EXPLORE" }, href: "/music/francisco-y-los-ninos" },
+      cta: { label: { en: "EXPLORE", es: "EXPLORAR" }, href: "/music/francisco-y-los-ninos" },
       decorTitle: { en: "FAMILIA", es: "FAMILIA" },
       overlay: false,
       tint: "light",
@@ -465,13 +470,13 @@ export const guitareHome: GuitareHomeContent = {
         en: "Crowd at SF City Hall \"Free All the Children\" rally with Solidaridad / Respeto / Justicia banner",
         es: "Multitud en la marcha \"Free All the Children\" frente al City Hall de SF con bandera Solidaridad / Respeto / Justicia",
       },
-      eyebrow: { en: "CULTURAL WORKER / TRABAJADOR CULTURAL", es: "TRABAJADOR CULTURAL / CULTURAL WORKER" },
+      eyebrow: { en: "CULTURAL WORKER", es: "TRABAJADOR CULTURAL" },
       title: { en: "TRABAJADOR CULTURAL", es: "TRABAJADOR CULTURAL" },
       tagline: {
         en: "Songs at picket lines, vigils, and marches — wherever community gathers",
         es: "Cantos en piquetes, vigilias y marchas — donde sea que la comunidad se reúna",
       },
-      cta: { label: { en: "ABOUT FRANCISCO / SOBRE FRANCISCO", es: "SOBRE FRANCISCO / ABOUT FRANCISCO" }, href: "/about" },
+      cta: { label: { en: "ABOUT FRANCISCO", es: "SOBRE FRANCISCO" }, href: "/about" },
       decorTitle: { en: "PUEBLO", es: "PUEBLO" },
       overlay: false,
       tint: "light",
@@ -485,13 +490,13 @@ export const guitareHome: GuitareHomeContent = {
         en: "Francisco singing at a rally with community members holding signs",
         es: "Francisco cantando en una marcha con miembros de la comunidad sosteniendo carteles",
       },
-      eyebrow: { en: "ON STAGE / EN ESCENA", es: "EN ESCENA / ON STAGE" },
+      eyebrow: { en: "ON STAGE", es: "EN ESCENA" },
       title: { en: "LIVE THROUGH THE YEARS", es: "EN ESCENA POR LOS AÑOS" },
       tagline: {
         en: "Over 50 concerts since 2010 — across the Bay Area, Fresno, Riverside, and beyond",
         es: "Más de 50 conciertos desde 2010 — del Área de la Bahía a Fresno, Riverside y más allá",
       },
-      cta: { label: { en: "VIEW PAST EVENTS / VER EVENTOS", es: "VER EVENTOS / VIEW PAST EVENTS" }, href: "/shows" },
+      cta: { label: { en: "VIEW PAST EVENTS", es: "VER EVENTOS" }, href: "/shows" },
       decorTitle: { en: "ESCENA", es: "ESCENA" },
       overlay: false,
       tint: "light",
@@ -501,17 +506,17 @@ export const guitareHome: GuitareHomeContent = {
 
   dealBanner: {
     background: "/stock-assets/images/amazing-beautiful-sunset-on-an-exotic-caribbean-be-2026-03-19-08-17-23-utc.jpg",
-    eyebrow: { en: "PUBLIC ART / ARTE PÚBLICO", es: "ARTE PÚBLICO / PUBLIC ART" },
+    eyebrow: { en: "PUBLIC ART", es: "ARTE PÚBLICO" },
     title: { en: "Music as Public Art", es: "Música como Arte Público" },
     body: {
       en: "Francisco's music is sung in churches, plazas, schools, picket lines — and everywhere people are organizing, having fun, and making a difference.",
-      es: "La música de Francisco se canta en iglesias, plazas, escuelas, líneas de piquete — y donde sea que la gente se organice, se divierta, y haga la diferencia.",
+      es: "La música de Francisco se canta en iglesias, plazas, escuelas, huelgas — y donde sea que la gente se organice, se divierta, y hace la diferencia.",
     },
-    cta: { label: { en: "READ MORE / LEER MÁS", es: "LEER MÁS / READ MORE" }, href: "/about" },
+    cta: { label: { en: "READ MORE", es: "LEER MÁS" }, href: "/about" },
   },
 
   customSection: {
-    sectionEyebrow: { en: "ABOUT / ACERCA", es: "ACERCA / ABOUT" },
+    sectionEyebrow: { en: "ABOUT", es: "ACERCA" },
     sectionTitle: { en: "Cultural Worker. Songwriter. Bridge.", es: "Trabajador Cultural. Cantautor. Puente." },
     blocks: [
       {
@@ -529,7 +534,7 @@ export const guitareHome: GuitareHomeContent = {
           es: "Por más de cuatro décadas Francisco ha llevado cantos a través de fronteras — entre inglés y español, entre iglesias y salones sindicales, entre ancianos y niños. Su trabajo está arraigado en el Área de la Bahía, cosechado en todas las Américas.",
         },
         cta: {
-          label: { en: "MORE ABOUT FRANCISCO / SOBRE FRANCISCO", es: "SOBRE FRANCISCO / MORE ABOUT FRANCISCO" },
+          label: { en: "MORE ABOUT FRANCISCO", es: "SOBRE FRANCISCO" },
           href: "/about",
         },
       },
@@ -542,13 +547,13 @@ export const guitareHome: GuitareHomeContent = {
         },
         reverse: true, // image right, text left
         eyebrow: { en: "MISSION", es: "MISIÓN" },
-        title: { en: "Songs of Liberation / Cantos de Liberación", es: "Cantos de Liberación / Songs of Liberation" },
+        title: { en: "Songs of Liberation", es: "Cantos de Liberación" },
         body: {
           en: "The themes are constant: migration as a sacred journey, family as the first community, faith as the ground beneath movement. The songs are written to be sung — by you, with us, for each other.",
           es: "Los temas son constantes: la migración como peregrinaje sagrado, la familia como primera comunidad, la fe como tierra bajo el movimiento. Los cantos están escritos para ser cantados — por ti, con nosotros, los unos por los otros.",
         },
         cta: {
-          label: { en: "EXPLORE THE MUSIC / EXPLORA LA MÚSICA", es: "EXPLORA LA MÚSICA / EXPLORE THE MUSIC" },
+          label: { en: "EXPLORE THE MUSIC", es: "EXPLORA LA MÚSICA" },
           href: "/music",
         },
       },
@@ -557,13 +562,13 @@ export const guitareHome: GuitareHomeContent = {
 
   productCarousel: {
     watermark: { en: "Carteles", es: "Carteles" },
-    eyebrow: { en: "FROM THE ARCHIVE / DEL ARCHIVO", es: "DEL ARCHIVO / FROM THE ARCHIVE" },
+    eyebrow: { en: "FROM THE ARCHIVE", es: "DEL ARCHIVO" },
     title: { en: "Concert Posters", es: "Carteles de Conciertos" },
     description: {
       en: "A wall of flyers and posters from past performances — vigils, concerts, communions, celebrations — over a decade and a half of Francisco's work.",
       es: "Un muro de carteles y volantes de presentaciones pasadas — vigilias, conciertos, comuniones, celebraciones — más de quince años del trabajo de Francisco.",
     },
-    ctaLabel: { en: "VIEW / VER", es: "VER / VIEW" },
+    ctaLabel: { en: "VIEW", es: "VER" },
     items: [
       {
         id: "valentine-2024",
@@ -664,7 +669,7 @@ export const guitareHome: GuitareHomeContent = {
 
   gridBanner: {
     background: PIC("gridbg", 1920, 800),
-    eyebrow: { en: "FEATURED RELEASES / LANZAMIENTOS DESTACADOS", es: "LANZAMIENTOS DESTACADOS / FEATURED RELEASES" },
+    eyebrow: { en: "FEATURED RELEASES", es: "LANZAMIENTOS DESTACADOS" },
     title: { en: "Three Albums to Start With", es: "Tres Álbumes Para Comenzar" },
     cards: [
       {
@@ -679,7 +684,7 @@ export const guitareHome: GuitareHomeContent = {
         },
         fullDescription: [
           {
-            en: "Con la participación de geni@s / with the musical genius of: Omar Sosa (piano), Mike Spiro (percussion), Camilo Landau (guitar), Miguel Govea (guitarrón), Rafael and Liliana Herrera (vocals).",
+            en: "With the musical genius of: Omar Sosa (piano), Mike Spiro (percussion), Camilo Landau (guitar), Miguel Govea (guitarrón), Rafael and Liliana Herrera (vocals).",
             es: "Con la participación de geni@s: Omar Sosa (piano), Mike Spiro (percusión), Camilo Landau (guitarra), Miguel Govea (guitarrón), Rafael y Liliana Herrera (voces).",
           },
           {
@@ -706,7 +711,7 @@ export const guitareHome: GuitareHomeContent = {
           { number: 11, title: "Si La Migra Viene", duration: "3:25", price: "$0.99" },
           { number: 12, title: "Se Vende Todo", duration: "6:48", price: "$0.99" },
         ],
-        cta: { label: { en: "BUY CD / COMPRAR CD", es: "COMPRAR CD / BUY CD" }, href: "/store/honor-migrante" },
+        cta: { label: { en: "BUY CD", es: "COMPRAR CD" }, href: "/store/honor-migrante" },
       },
       {
         id: "fuerza-de-la-raiz",
@@ -757,17 +762,17 @@ export const guitareHome: GuitareHomeContent = {
           { number: 15, title: "Yo Traigo Flores", duration: "1:37", price: "$0.55", originalPrice: "$0.99" },
           { number: 16, title: "Tambor", duration: "1:24", price: "Free" },
         ],
-        cta: { label: { en: "BUY CD / COMPRAR CD", es: "COMPRAR CD / BUY CD" }, href: "/store/fuerza-de-la-raiz" },
+        cta: { label: { en: "BUY CD", es: "COMPRAR CD" }, href: "/store/fuerza-de-la-raiz" },
       },
       {
         id: "francisco-y-los-ninos",
         image: "/images/albums/Francisco-y-L%40s-NI%C3%B1%40s.png",
-        title: { en: "Francisco y Las Niñas", es: "Francisco y Las Niñas" },
+        title: { en: "Francisco y Los Niños", es: "Francisco y Los Niños" },
         series: { en: "Francisco J. Herrera", es: "Francisco J. Herrera" },
         price: { en: "Download: Your Price", es: "Descarga: Tu Precio" },
         description: {
-          en: "Grabado con niñas Alma, Tayira, Liliana, Camila, Martín, Camilo, Germán / Recorded with children: Alma, Tayira, Liliana, Camila, Martín, Camilo, Germán. Canciones para divertirnos con nuestras hijas, amigas y aprender español al mismo tiempo / Songs to enjoy with our children and friends while learning Spanish at the same time.",
-          es: "Grabado con niñas Alma, Tayira, Liliana, Camila, Martín, Camilo, Germán. Canciones para divertirnos con nuestras hijas, amigas y aprender español al mismo tiempo — Recorded with children, songs to enjoy with our children and friends while learning Spanish at the same time.",
+          en: "Recorded with children: Alma, Tayira, Liliana, Camila, Martín, Camilo, Germán. Songs to enjoy with our children and friends while learning Spanish at the same time.",
+          es: "Grabado con niñas Alma, Tayira, Liliana, Camila, Martín, Camilo, Germán. Canciones para divertirnos con nuestras hijas, amigas y aprender español al mismo tiempo.",
         },
         featuredTrack: {
           title: "Abecedario (Spanish Alphabet)",
@@ -788,18 +793,18 @@ export const guitareHome: GuitareHomeContent = {
           { number: 11, title: "Los Pollitos (DAR)", duration: "0:59", price: "Free", infoHref: "#" },
           { number: 12, title: "Juanito Baila", duration: "1:46", price: "Free" },
         ],
-        cta: { label: { en: "BUY CD / COMPRAR CD", es: "COMPRAR CD / BUY CD" }, href: "/store/francisco-y-los-ninos" },
+        cta: { label: { en: "BUY CD", es: "COMPRAR CD" }, href: "/store/francisco-y-los-ninos" },
       },
     ],
   },
 
   uniqueCollections: {
     watermark: { en: "Collection", es: "Colección" },
-    eyebrow: { en: "OUR MUSIC / NUESTRA MÚSICA", es: "NUESTRA MÚSICA / OUR MUSIC" },
+    eyebrow: { en: "OUR MUSIC", es: "NUESTRA MÚSICA" },
     title: { en: "Our Unique Collections", es: "Nuestras Colecciones Únicas" },
     description: {
       en: "Discover Francisco Herrera's extraordinary music collection, featuring carefully curated albums that showcase the evolution of guitar artistry. Each piece represents a milestone in musical expression, from intimate acoustic sessions to powerful electric performances. These collections capture the essence of Francisco's musical journey, blending traditional Spanish influences with contemporary sounds that speak to the soul.",
-      es: "Descubre la extraordinaria colección musical de Francisco Herrera, con álbumes cuidadosamente seleccionados que muestran la evolución de su arte. Cada pieza representa un hito en la expresión musical, desde sesiones acústicas íntimas hasta poderosas interpretaciones eléctricas. Estas colecciones capturan la esencia del viaje musical de Francisco, fusionando influencias tradicionales con sonidos contemporáneos que hablan al alma.",
+      es: "Descubre la extraordinaria colección musical de Francisco Herrera, con álbumes cuidadosamente seleccionados que muestran la evolución de su arte. Cada pieza representa un momento clave en la expresión musical, desde sesiones acústicas íntimas hasta poderosas interpretaciones eléctricas. Estas colecciones capturan la esencia del viaje musical de Francisco, fusionando influencias tradicionales con sonidos contemporáneos que hablan al alma.",
     },
     albums: [
       {
@@ -837,8 +842,8 @@ export const guitareHome: GuitareHomeContent = {
       {
         id: "francisco-y-los-ninos",
         image: "/images/albums/Francisco-y-L%40s-NI%C3%B1%40s.png",
-        imageAlt: { en: "Francisco y Las Niñas album", es: "Álbum Francisco y Las Niñas" },
-        title: { en: "Francisco y Las Niñas", es: "Francisco y Las Niñas" },
+        imageAlt: { en: "Francisco y Los Niños album", es: "Álbum Francisco y Los Niños" },
+        title: { en: "Francisco y Los Niños", es: "Francisco y Los Niños" },
         price: { en: "$10.00", es: "$10.00" },
         cta: { label: { en: "Add to Cart", es: "Añadir al Carrito" }, href: "/store/francisco-y-los-ninos" },
       },
@@ -869,7 +874,7 @@ export const guitareHome: GuitareHomeContent = {
 
   featuredSongs: {
     watermark: { en: "Our Music", es: "Nuestra Música" },
-    eyebrow: { en: "Our Music / Nuestra Música", es: "Nuestra Música / Our Music" },
+    eyebrow: { en: "Our Music", es: "Nuestra Música" },
     title: { en: "Featured Song Collection", es: "Colección de Canciones Destacadas" },
     songs: [
       {
@@ -922,7 +927,7 @@ export const guitareHome: GuitareHomeContent = {
             es: "La vida, los gozos, luchas, triunfos, Dignidad del pueblo migrante en Canción. Disfrútala, compártela con amistades y familia — Life, Joys, Struggle, Triumphs, Dignity of Migrant People in Song. Enjoy it, share it with friends and family.",
           },
           {
-            en: "Con la participación de geni@s / With the musical genius of: Omar Sosa (piano), Mike Spiro (percussion), Camilo Landau (guitar), Miguel Govea (guitarrón), Rafael and Liliana Herrera (vocals). Producer: Greg Landau (Maldita Vecindad, Los Cojolites, Susana Baca). Mastering: John Greene (Los Tigres del Norte).",
+            en: "With the musical genius of: Omar Sosa (piano), Mike Spiro (percussion), Camilo Landau (guitar), Miguel Govea (guitarrón), Rafael and Liliana Herrera (vocals). Producer: Greg Landau (Maldita Vecindad, Los Cojolites, Susana Baca). Mastering: John Greene (Los Tigres del Norte).",
             es: "Con la participación de geni@s: Omar Sosa (piano), Mike Spiro (percusión), Camilo Landau (guitarra), Miguel Govea (guitarrón), Rafael y Liliana Herrera (voces). Productor: Greg Landau (Maldita Vecindad, Los Cojolites, Susana Baca). Masterización: John Greene (Los Tigres del Norte).",
           },
         ],
@@ -943,7 +948,7 @@ export const guitareHome: GuitareHomeContent = {
 
   companeros: {
     watermark: { en: "Compañeros", es: "Compañeros" },
-    eyebrow: { en: "PERFORMING WITH / TOCANDO CON · COMPAÑER@S", es: "TOCANDO CON / PERFORMING WITH · COMPAÑER@S" },
+    eyebrow: { en: "PERFORMING WITH · COMPAÑER@S", es: "TOCANDO CON · COMPAÑER@S" },
     title: { en: "Compañeros", es: "Compañeros" },
     description: {
       en: "Francisco often sings and performs solo, but for big concerts he's joined by the compañer@s — fellow musicians and longtime collaborators who bring their own voices, instruments, and stories to the stage.",
@@ -953,45 +958,52 @@ export const guitareHome: GuitareHomeContent = {
       {
         id: "pedro",
         image: "/images/band/pedro.png",
-        imageAlt: { en: "Pedro", es: "Pedro" },
-        name: { en: "Pedro", es: "Pedro" },
-        role: { en: "Guitar", es: "Guitarra" },
+        imageAlt: { en: "Pedro Gómez", es: "Pedro Gómez" },
+        name: { en: "Pedro Gómez", es: "Pedro Gómez" },
+        role: { en: "Percussions", es: "Percusiones" },
         bio: {
-          en: "A trusted collaborator on stage and in the studio, bringing decades of guitar craft to Francisco's live performances.",
-          es: "Colaborador de confianza en el escenario y el estudio, aportando décadas de oficio en la guitarra a las presentaciones en vivo de Francisco.",
+          en: "A trusted collaborator on stage and in the studio. Pedro Gómez is a multipercussionist, educator, band leader, and business owner in San Francisco.",
+          es: "Colaborador de confianza en el escenario y el estudio. Pedro Gómez es multipercusionista, educador, líder de banda y empresario en San Francisco.",
         },
-        cta: { label: { en: "Read More / Leer Más", es: "Leer Más / Read More" }, href: "/companeros/pedro" },
+        bioLink: {
+          label: { en: "Pedro Gómez", es: "Pedro Gómez" },
+          href: "https://www.bayonics.com",
+        },
+        cta: { label: { en: "Read More", es: "Leer Más" }, href: "/companeros/pedro" },
       },
       {
         id: "dr-loco",
         image: "/images/band/dr-loco.png",
         imageAlt: { en: "Dr. Loco", es: "Dr. Loco" },
         name: { en: "Dr. Loco", es: "Dr. Loco" },
-        role: { en: "Bandleader & Guitarist", es: "Líder de Banda y Guitarrista" },
+        role: {
+          en: "Sax, Flute & Winds · Bandleader",
+          es: "Saxofón, Flauta y Vientos · Líder de Banda",
+        },
         bio: {
           en: "Bay Area legend whose Rockin' Jalapeño Band has long shared stages with Francisco — a kindred cultural worker in song.",
           es: "Leyenda del Área de la Bahía cuya Rockin' Jalapeño Band ha compartido escenarios con Francisco por años — un trabajador cultural hermano en el canto.",
         },
-        cta: { label: { en: "Read More / Leer Más", es: "Leer Más / Read More" }, href: "/companeros/dr-loco" },
+        cta: { label: { en: "Read More", es: "Leer Más" }, href: "/companeros/dr-loco" },
       },
       {
         id: "chris-trinidad",
         image: "/images/band/chris-trinidad.png",
         imageAlt: { en: "Chris Trinidad", es: "Chris Trinidad" },
         name: { en: "Chris Trinidad", es: "Chris Trinidad" },
-        role: { en: "Bass", es: "Bajo" },
+        role: { en: "Bass & Keyboards", es: "Bajo y Teclados" },
         bio: {
           en: "Brings the low-end heartbeat to Francisco's bigger shows — a steady groove rooted in Bay Area Latin music traditions.",
           es: "Aporta el latido grave a los conciertos grandes de Francisco — un groove firme arraigado en las tradiciones de la música latina del Área de la Bahía.",
         },
-        cta: { label: { en: "Read More / Leer Más", es: "Leer Más / Read More" }, href: "/companeros/chris-trinidad" },
+        cta: { label: { en: "Read More", es: "Leer Más" }, href: "/companeros/chris-trinidad" },
       },
     ],
   },
 
   playAlong: {
     watermark: { en: "Play Along", es: "Toca Con" },
-    eyebrow: { en: "PLAY ALONG / TOCA CON NOSOTROS", es: "TOCA CON NOSOTROS / PLAY ALONG" },
+    eyebrow: { en: "PLAY ALONG", es: "TOCA CON NOSOTROS" },
     title: { en: "Pick Up Your Guitar", es: "Toma Tu Guitarra" },
     description: {
       en: "Chord diagrams and a video player to learn Francisco's songs at home, in the classroom, or with the community. Switch between guitar, ukulele, piano, or mandolin.",
@@ -1008,28 +1020,28 @@ export const guitareHome: GuitareHomeContent = {
 
   songOfLiberation: {
     watermark: { en: "Liberación", es: "Liberación" },
-    eyebrow: { en: "FEATURED / DESTACADO", es: "DESTACADO / FEATURED" },
-    title: { en: "Song of Liberation / Canto de Liberación", es: "Canto de Liberación / Song of Liberation" },
+    eyebrow: { en: "FEATURED", es: "DESTACADO" },
+    title: { en: "Song of Liberation", es: "Canto de Liberación" },
     image: "/images/photos/Children-holding%20candles-at-vigil.webp",
     imageAlt: {
       en: "Children holding candles at a vigil",
       es: "Niñas sosteniendo velas en una vigilia",
     },
     quote: {
-      en: "La música de Francisco inspira / Francisco's music inspires.",
-      es: "La música de Francisco inspira / Francisco's music inspires.",
+      en: "Francisco's music inspires.",
+      es: "La música de Francisco inspira.",
     },
     quoteAttribution: {
       en: "— CAMINANDO · Francisco Herrera / Greg Landau",
       es: "— CAMINANDO · Francisco Herrera / Greg Landau",
     },
     storyEn: [
-      "Whether it is singing with your children or as community at a rally, action for social justice, picket line, or a celebration of our sheroes and heroes — the music of Francisco is music of liberation.",
-      "Use it in your activities, give it as a present to a friend, buy the CDs and grant them to a friend for donating to your organization to inspire their own actions for liberation. The stories and games, memories, heroism of our people in MUSIC.",
+      "Whether it is singing with your children or with the community at a rally, action for social justice, picket line, or a celebration of our sheroes and heroes — the music of Francisco is music of liberation.",
+      "Use it in your activities, give it as a present to a friend, buy the CDs and give them to a friend for donating to your organization to inspire their own actions of solidarity, communicating the stories and games, memories, heroism of our people in MUSIC.",
     ],
     storyEs: [
-      "Sea cantar con sus hijas o comunidad en una marcha, piquete, carnaval o celebración de nuestras héroes y heroínas, la música de Francisco es Canto de Liberación.",
-      "Úsala en tus actividades, obséquiala a una amistad, preséntala como regalo de gracias por una donación a tu organización para inspirar acciones de liberación. Las historias, los juegos, las memorias de nuestro pueblo en Música.",
+      "Sea cantar con sus hijas o con la comunidad en una marcha, piquete, carnaval o celebración de nuestras héroes y heroínas, la música de Francisco es Canto de Liberación.",
+      "Úsala en tus actividades, obséquiala a una amistad, preséntala como regalo de gracias por una donación a tu organización para inspirar acciones de solidaridad, comunicando las historias, los juegos, las memorias de nuestro pueblo en Música.",
     ],
     song: {
       title: { en: "Nuevo Sol", es: "Nuevo Sol" },
@@ -1045,8 +1057,8 @@ export const guitareHome: GuitareHomeContent = {
   saludos: {
     watermark: { en: "Voces", es: "Voces" },
     eyebrow: {
-      en: "GREETINGS & COMMENTS / SALUDOS Y COMENTARIOS",
-      es: "SALUDOS Y COMENTARIOS / GREETINGS & COMMENTS",
+      en: "GREETINGS & COMMENTS",
+      es: "SALUDOS Y COMENTARIOS",
     },
     title: { en: "Saludos", es: "Saludos" },
     description: {
@@ -1122,8 +1134,8 @@ export const guitareHome: GuitareHomeContent = {
   voicemail: {
     watermark: { en: "Mensaje", es: "Mensaje" },
     eyebrow: {
-      en: "VOICEMAIL / CORREO DE VOZ",
-      es: "CORREO DE VOZ / VOICEMAIL",
+      en: "VOICEMAIL",
+      es: "CORREO DE VOZ",
     },
     title: {
       en: "A Message from Francisco",
@@ -1169,22 +1181,22 @@ export const guitareHome: GuitareHomeContent = {
 
   donate: {
     watermark: { en: "Caminando", es: "Caminando" },
-    eyebrow: { en: "SUPPORT THE WORK / APOYA EL TRABAJO", es: "APOYA EL TRABAJO / SUPPORT THE WORK" },
+    eyebrow: { en: "SUPPORT THE WORK", es: "APOYA EL TRABAJO" },
     title: { en: "Support Social Change Through Music", es: "Apoya el Cambio Social a Través de la Música" },
     body: {
       en: "Francisco's music has been sung in churches, plazas, schools, and picket lines for over four decades. Help us release the next album, CAMINANDO, and keep these songs traveling to the communities that need them.",
-      es: "La música de Francisco se ha cantado en iglesias, plazas, escuelas y líneas de piquete por más de cuatro décadas. Ayúdanos a lanzar el próximo álbum, CAMINANDO, y a seguir llevando estos cantos a las comunidades que los necesitan.",
+      es: "La música de Francisco se ha cantado en iglesias, plazas, escuelas y huelgas por más de cuatro décadas. Ayúdanos a lanzar el próximo álbum, CAMINANDO, y a seguir llevando estos cantos a las comunidades que los necesitan.",
     },
     campaignTag: { en: "CAMINANDO · Coming 2026", es: "CAMINANDO · Próximamente 2026" },
     presetAmounts: [10, 25, 50, 100],
-    primaryCta: { label: { en: "Donate Now / Donar", es: "Donar / Donate Now" }, href: "/donate" },
+    primaryCta: { label: { en: "Donate Now", es: "Donar" }, href: "/donate" },
     secondaryCta: { label: { en: "Other Ways to Support", es: "Otras Maneras de Apoyar" }, href: "/donate#other" },
   },
 
   featuredBlog: {
     background: PIC("blogbg", 1920, 800),
     eyebrow: { en: "BLOG", es: "BLOG" },
-    title: { en: "On the Road / En Camino", es: "En Camino / On the Road" },
+    title: { en: "On the Road", es: "En Camino" },
     // The 4 cards mirror real posts now living at /blog/[slug] — sourced
     // from franciscoherreramusic.com (see lib/content/blog.ts for the full
     // archive). Card design preserved per user request; only the data was
@@ -1194,7 +1206,7 @@ export const guitareHome: GuitareHomeContent = {
         id: "song-of-liberation",
         image: "/images/photos/francisco-singing-protest.webp",
         date: { en: "March 6, 2016", es: "6 de marzo de 2016" },
-        title: { en: "Song of Liberation / Canto de Liberación", es: "Canto de Liberación / Song of Liberation" },
+        title: { en: "Song of Liberation", es: "Canto de Liberación" },
         excerpt: {
           en: "Whether singing with your children or as community at a rally — the music of Francisco is music of liberation.",
           es: "Sea cantando con tus hijos o como comunidad en una marcha — la música de Francisco es Canto de Liberación.",

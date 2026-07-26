@@ -9,7 +9,7 @@ import {
   MOMENTS_CELLS,
 } from "@/components/sections/EpkGallery";
 import { homepageHighlights } from "@/lib/content/shows";
-import type { Lang } from "@/lib/i18n";
+import { getLang } from "@/lib/i18n-server";
 
 /**
  * EPK page — full structural clone of the Wes Webflow template
@@ -28,13 +28,11 @@ import type { Lang } from "@/lib/i18n";
  * pale-gold hairline borders, zero border-radius.
  */
 
-const lang: Lang = "en";
-
 // Albums list mirrors /about discography for cross-page consistency.
 const ALBUMS: { id: string; title: string; image: string }[] = [
   { id: "honor-migrante", title: "Honor Migrante", image: "/images/albums/Honor-Migrante.png" },
   { id: "fuerza-de-la-raiz", title: "Fuerza de la Raíz", image: "/images/albums/Fuerza-de-la-Raíz.png" },
-  { id: "francisco-y-las-ninas", title: "Francisco y L@s Niñ@s", image: "/images/albums/Francisco-y-L@s-NIñ@s.png" },
+  { id: "francisco-y-los-ninos", title: "Francisco y Los Niños", image: "/images/albums/Francisco-y-L@s-NIñ@s.png" },
   { id: "canta-y-juega", title: "Canta y Juega", image: "/images/albums/Canta-y-Juega.png" },
   { id: "nuestros-ninos-son-sagrado", title: "Nuestros Niños Son Sagrado", image: "/images/albums/Nuestros-Niños-Son-Sagrado.png" },
   { id: "posada-sin-fronteras", title: "Posada Sin Fronteras", image: "/images/albums/Posada-Sin-Fronteras.png" },
@@ -70,7 +68,9 @@ const FEATURED_TRACKS: { n: number; title: string; duration: string; price: stri
 const LISTEN_HREF =
   "https://franciscoherreramusic.com/blog/blog/4229141/amor-sin-papeles--2";
 
-export default function EpkPage() {
+export default async function EpkPage() {
+  const lang = await getLang();
+
   return (
     <>
       <Header lang={lang} />
@@ -157,9 +157,9 @@ export default function EpkPage() {
               </span>
             </h1>
             <p className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed max-w-3xl mx-auto [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-              Bilingual guitarist and singer-songwriter. Four decades of
-              cantos for liberation, migration, family, and faith — in
-              churches, union halls, classrooms, and on the streets.
+              {lang === "en"
+                ? "Bilingual guitarist and singer-songwriter. Four decades of cantos for liberation, migration, family, and faith — in churches, union halls, classrooms, and on the streets."
+                : "Guitarrista y cantautor bilingüe. Cuatro décadas de cantos de liberación, migración, familia y fe — en iglesias, salones sindicales, aulas y en las calles."}
             </p>
           </div>
         </section>
@@ -193,26 +193,21 @@ export default function EpkPage() {
             </div>
             <div className="lg:text-right epk-fade-up-slow">
               <h2 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-[var(--color-fg)] uppercase leading-[0.95] mb-6 sm:mb-8 tracking-tight">
-                Cantos
+                {lang === "en" ? "Cantos" : "Cantos"}
                 <br />
                 <span className="italic font-light text-[var(--color-accent-brand)]">
-                  from the border.
+                  {lang === "en" ? "from the border." : "de la frontera."}
                 </span>
               </h2>
               <p className="font-body text-sm sm:text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/95 mb-5">
-                Francisco Herrera is a boundary-crossing artist whose music
-                blends cultural pride with a call for justice. Born in
-                Calexico, he began singing rancheras and ballads alongside
-                his siblings at community and political events, then
-                expanded into rhythm and blues, jazz, rock, punk, pop, and
-                gospel — an eclectic style that knows no borders.
+                {lang === "en"
+                  ? "Francisco Herrera is a boundary-crossing artist whose music blends cultural pride with a call for justice. Born in Calexico, he began singing rancheras and ballads alongside his siblings at community and political events, then expanded into rhythm and blues, jazz, rock, punk, pop, and gospel — an eclectic style that knows no borders."
+                  : "Francisco Herrera es un artista sin fronteras cuya música une el orgullo cultural con un llamado a la justicia. Nacido en Calexico, empezó cantando rancheras y baladas junto a sus hermanos en eventos comunitarios y políticos, y luego se expandió al rhythm and blues, el jazz, el rock, el punk, el pop y el gospel — un estilo ecléctico que no conoce fronteras."}
               </p>
               <p className="font-body text-sm sm:text-base lg:text-lg leading-[1.8] text-[var(--color-fg)]/85">
-                Inspired by Archbishop Óscar Romero and the rise of Base
-                Christian Communities, his music champions human rights and
-                amplifies working people&apos;s voices. Live performance is
-                where his songs become tools of empowerment and solidarity
-                — community centers, streets, churches, and union halls.
+                {lang === "en"
+                  ? "Inspired by Archbishop Óscar Romero and the rise of Base Christian Communities, his music champions human rights and amplifies working people's voices. Live performance is where his songs become tools of empowerment and solidarity — community centers, streets, churches, and union halls."
+                  : "Inspirada por Monseñor Óscar Romero y el surgimiento de las Comunidades Eclesiales de Base, su música defiende los derechos humanos y amplifica las voces de la gente trabajadora. La presentación en vivo es donde sus canciones se vuelven herramientas de empoderamiento y solidaridad — centros comunitarios, calles, iglesias y salones sindicales."}
               </p>
             </div>
           </div>

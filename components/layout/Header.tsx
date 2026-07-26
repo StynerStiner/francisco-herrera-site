@@ -8,6 +8,7 @@ import * as React from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { primaryNav, type NavItem } from "@/lib/nav";
 import { t, type Lang } from "@/lib/i18n";
+import { LangToggle } from "@/components/layout/LangToggle";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/components/ui/link";
 import NextLink from "next/link";
@@ -93,9 +94,7 @@ export function Header({ lang = "en" }: HeaderProps) {
               icon trio was removed per client request; if Donate or Cart
               come back, restore them as IconLinks here. */}
           <div className="flex items-center gap-1 sm:gap-2 shrink-0">
-            <span className="hidden sm:flex items-center gap-2">
-              <LangToggle lang={lang} />
-            </span>
+            <LangToggle lang={lang} className="hidden sm:flex" />
             <button
               type="button"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -209,20 +208,5 @@ function NavDropdown({ item, lang }: { item: NavItem; lang: Lang }) {
         </div>
       )}
     </div>
-  );
-}
-
-function LangToggle({ lang }: { lang: Lang }) {
-  const activeClass = "text-[var(--color-accent-brand)]";
-  const idleClass = "text-[var(--color-muted-brand)] hover:text-[var(--color-accent-brand)]";
-  return (
-    <span
-      aria-label="Language"
-      className="font-ui font-semibold text-sm flex items-center gap-2"
-    >
-      <span className={lang === "en" ? activeClass : idleClass}>EN</span>
-      <span aria-hidden="true" className="text-[var(--color-muted-brand)]/50">|</span>
-      <span className={lang === "es" ? activeClass : idleClass}>ES</span>
-    </span>
   );
 }

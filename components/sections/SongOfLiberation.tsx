@@ -80,7 +80,7 @@ export function SongOfLiberation({ content, lang = "en" }: Props) {
             </div>
             <details className="mb-8 group">
               <summary className="cursor-pointer font-heading text-xs uppercase tracking-[0.2em] text-(--color-accent-brand) hover:underline">
-                {lang === "en" ? "Read in Spanish / Leer en español" : "Read in English / Leer en inglés"}
+                {lang === "en" ? "Read in Spanish" : "Leer en inglés"}
               </summary>
               <div className="mt-4 space-y-4 text-(--color-muted-brand) text-sm lg:text-base leading-relaxed">
                 {altStory.map((para, i) => (

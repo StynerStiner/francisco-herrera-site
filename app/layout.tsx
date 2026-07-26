@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lora, Manrope, Playfair_Display } from "next/font/google";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
+import { getLang } from "@/lib/i18n-server";
 import "./globals.css";
 
 // Three-tier typography:
@@ -42,13 +43,15 @@ export const metadata: Metadata = {
     "Bilingual guitarist and singer-songwriter — songs of liberation, migration, family, and faith.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const lang = await getLang();
+
   return (
-    <html lang="en" className={`${lora.variable} ${playfair.variable} ${manrope.variable}`} suppressHydrationWarning>
+    <html lang={lang} className={`${lora.variable} ${playfair.variable} ${manrope.variable}`} suppressHydrationWarning>
       <body className="min-h-screen antialiased" suppressHydrationWarning>
         {children}
         <ScrollToTop />

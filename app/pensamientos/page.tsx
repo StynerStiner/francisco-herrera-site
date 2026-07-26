@@ -1,10 +1,13 @@
 import { StubPage } from "@/components/layout/StubPage";
+import { getLang } from "@/lib/i18n-server";
 
-export default function PensamientosPage() {
+export default async function PensamientosPage() {
+  const lang = await getLang();
+
   return (
     <StubPage
+      lang={lang}
       title={{ en: "Pensamientos", es: "Pensamientos" }}
-      lang="es"
       heroImage="/images/client-sent-images/IMG_0139.jpeg"
       imagePosition="center"
       watermark={{ en: "Reflexión", es: "Reflexión" }}

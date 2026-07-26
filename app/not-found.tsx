@@ -2,15 +2,30 @@ import * as React from "react";
 import NextLink from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { t, type Localized } from "@/lib/i18n";
+import { getLang } from "@/lib/i18n-server";
 
 // Custom 404 — reuses the brand surface so a mistyped URL still feels like
 // the site, not a server-default page. Single dark hero with a Francisco
 // photo, signature script title in gold, and two CTAs back into the site.
 
-export default function NotFound() {
+const COPY: Record<string, Localized> = {
+  eyebrow: { en: "404 / Page not found", es: "404 / Página no encontrada" },
+  title: { en: "Lost on the road", es: "Perdido en el camino" },
+  body: {
+    en: "The page you're looking for has wandered off — but the music hasn't. Try one of these instead.",
+    es: "La página que buscas se ha extraviado — pero la música sigue. Prueba una de estas.",
+  },
+  home: { en: "Home", es: "Inicio" },
+  blog: { en: "Read the blog", es: "Leer el blog" },
+};
+
+export default async function NotFound() {
+  const lang = await getLang();
+
   return (
     <>
-      <Header lang="en" />
+      <Header lang={lang} />
       <main>
         <section
           className="relative isolate overflow-hidden min-h-[80vh] flex items-center"
@@ -50,39 +65,32 @@ export default function NotFound() {
 
           <div className="relative z-10 mx-auto max-w-[var(--container-content)] px-6 text-center">
             <span className="font-ui font-semibold text-xs sm:text-sm uppercase tracking-[0.4em] text-white mb-4 inline-block">
-              404 / Página no encontrada
+              {t(COPY.eyebrow, lang)}
             </span>
             <h1 className="font-signature text-5xl sm:text-6xl lg:text-7xl text-[var(--color-accent-brand)] mb-6 leading-tight [text-shadow:0_2px_24px_rgba(0,0,0,0.55)]">
-              Lost on the road
-              <br className="sm:hidden" />
-              <span className="block sm:inline"> / Perdido en el camino</span>
+              {t(COPY.title, lang)}
             </h1>
             <p className="text-white/85 text-base lg:text-lg leading-relaxed max-w-2xl mx-auto mb-10 [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-              The page you&apos;re looking for has wandered off — but the
-              music hasn&apos;t. Try one of these instead.
-              <br />
-              <span className="text-white/70 italic text-sm sm:text-base">
-                La página que buscas se ha extraviado — pero la música sigue. Prueba una de estas.
-              </span>
+              {t(COPY.body, lang)}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <NextLink
                 href="/"
                 className="inline-flex items-center gap-2 font-ui font-semibold text-xs uppercase tracking-[0.2em] bg-[var(--color-accent-brand)] text-[var(--color-bg)] hover:bg-[var(--color-fg)] transition-colors px-7 py-3"
               >
-                Home / Inicio
+                {t(COPY.home, lang)}
               </NextLink>
               <NextLink
                 href="/blog/song-of-liberation"
                 className="inline-flex items-center gap-2 font-ui font-semibold text-xs uppercase tracking-[0.2em] border border-[var(--color-accent-brand)]/60 text-white hover:bg-[var(--color-accent-brand)] hover:text-[var(--color-bg)] hover:border-[var(--color-accent-brand)] transition-colors px-7 py-3"
               >
-                Read the blog / Leer el blog
+                {t(COPY.blog, lang)}
               </NextLink>
             </div>
           </div>
         </section>
       </main>
-      <Footer lang="en" />
+      <Footer lang={lang} />
     </>
   );
 }

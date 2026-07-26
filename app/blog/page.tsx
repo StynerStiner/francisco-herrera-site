@@ -2,9 +2,8 @@ import NextLink from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { blogPosts, type BlogPost } from "@/lib/content/blog";
-import { t, type Lang } from "@/lib/i18n";
-
-const lang: Lang = "en";
+import { t } from "@/lib/i18n";
+import { getLang } from "@/lib/i18n-server";
 
 // Per-post crop-anchor for card thumbnails. Solo Portraits are vertical
 // with the subject's head at varying y-positions in the source, so the
@@ -35,7 +34,9 @@ const YEAR_SPAN = LATEST_YEAR - FIRST_YEAR;
 // every post; this row is just the editorial first read.
 const STARTING_PICKS = blogPosts.slice(0, 3);
 
-export default function BlogIndex() {
+export default async function BlogIndex() {
+  const lang = await getLang();
+
   return (
     <>
       <Header lang={lang} />

@@ -20,8 +20,8 @@ const description: Localized = {
 };
 const watermark: Localized = { en: "Vivo", es: "Vivo" };
 const watchCta: Localized = {
-  en: "Watch on YouTube / Ver en YouTube",
-  es: "Watch on YouTube / Ver en YouTube",
+  en: "Watch on YouTube",
+  es: "Ver en YouTube",
 };
 const ariaLabel: Localized = {
   en: "Watch Francisco perform live",

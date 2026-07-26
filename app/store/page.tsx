@@ -5,9 +5,8 @@ import { FeaturedReleases } from "@/components/sections/FeaturedReleases";
 import { StoreVideo } from "@/components/sections/StoreVideo";
 import { StoreCatalog } from "@/components/sections/StoreCatalog";
 import { storeContent } from "@/lib/content/store";
-import { t, type Lang } from "@/lib/i18n";
-
-const lang: Lang = "en";
+import { t } from "@/lib/i18n";
+import { getLang } from "@/lib/i18n-server";
 
 // Counts derived from the store data so the stats stay in sync as
 // content changes. "Free" includes tracks priced kind:"free" — every
@@ -58,7 +57,9 @@ function pickFromCatalog(slug: string) {
   return storeContent.catalog.items.find((i) => i.slug === slug);
 }
 
-export default function StorePage() {
+export default async function StorePage() {
+  const lang = await getLang();
+
   return (
     <>
       <Header lang={lang} />
@@ -328,16 +329,10 @@ export default function StorePage() {
               {lang === "en" ? "From Francisco / De Francisco" : "De Francisco / From Francisco"}
             </span>
 
-            <p className="font-signature text-3xl sm:text-4xl lg:text-5xl text-[var(--color-accent-brand)] leading-[1.4] mb-8 [text-shadow:0_2px_18px_rgba(0,0,0,0.45)]">
+            <p className="font-signature text-3xl sm:text-4xl lg:text-5xl text-[var(--color-accent-brand)] leading-[1.4] mb-10 [text-shadow:0_2px_18px_rgba(0,0,0,0.45)]">
               {lang === "en"
                 ? "These songs are not for shelves. They are for car rides, kitchen tables, classrooms, vigils, and quiet evenings. Take them. Sing them. Share them — they belong to you the moment you press play."
                 : "Estos cantos no son para las repisas. Son para los viajes en carro, las mesas de la cocina, las aulas, las vigilias y las noches tranquilas. Tómenlos. Cántenlos. Compártanlos — son suyos desde el momento en que aprietan reproducir."}
-            </p>
-
-            <p className="font-body italic text-base lg:text-lg text-[var(--color-fg)]/85 leading-relaxed mb-10">
-              {lang === "en"
-                ? "Estos cantos no son para las repisas. Son para los viajes en carro, las mesas de la cocina, las aulas, las vigilias y las noches tranquilas. Tómenlos. Cántenlos. Compártanlos — son suyos desde el momento en que aprietan reproducir."
-                : "These songs are not for shelves. They are for car rides, kitchen tables, classrooms, vigils, and quiet evenings. Take them. Sing them. Share them — they belong to you the moment you press play."}
             </p>
 
             <p className="font-signature text-3xl sm:text-4xl text-white leading-none [-webkit-text-stroke:0.4px_currentColor]">
